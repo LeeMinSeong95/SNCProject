@@ -100,14 +100,15 @@
 
 8. 게시판 (5) - (DELETE)
 
-
+![Image](https://github.com/user-attachments/assets/1f185970-e631-4c75-aed1-425c81993323)
 <br>
 <br>
 <br>
 
-9. 
+9. 게시판 댓글
 
-![schedule](https://github.com/LeeMinSeong95/mySODAproject/assets/157666399/a2f9ba15-d59b-4d97-b622-1c46b8ee5869)
+<img src="https://github.com/user-attachments/assets/86b6b303-678e-4ad8-9934-38a5ce144a91" width="400" /> <img src="https://github.com/user-attachments/assets/49cfd5ed-492c-4c51-8fa4-6a0c65686f19" width="400" />
+<img src="https://github.com/user-attachments/assets/6e74784a-18c0-4b44-a3d8-d7c9b2d89ee8" width="400" />
 <br>
 <br>
 <br>
