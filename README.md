@@ -76,6 +76,8 @@
 <p>3. MyBatis : SQL 쿼리문을 다양한 상황에서 다채롭게 사용 if,where 등</p> <br />
 <p>4. Thymeleaf : 타임리프의 속성 if, each, text, value 등 다양한 속성으로 동적인 웹페이지를 쉽게 구현</p> <br/>
 <p>5. REST API : 카카오톡 나에게 보내기 REST API를 통해 알림 설정 구현, 테스트 통과를 했지만 실제적인 알림 로직에 대한 코드의 간결화와 정확성 의문</p>
+<br/>
+<br/>
 
 # ⭐ 구현 기능 (Implementation Function)
 
