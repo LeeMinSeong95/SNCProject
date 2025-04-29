@@ -70,42 +70,42 @@
 <br>
 <br>
 
-4. 게시판 (1) - (main)
+4. 게시판 (Board) (1) - (main)
 
 <img src="https://github.com/user-attachments/assets/938c3b65-5826-4760-aa40-75b087898610" width="400" /> <img src="https://github.com/user-attachments/assets/2817c7e2-c707-4ee7-a2bc-68d05b10238f" width="400" /> <img src="https://github.com/user-attachments/assets/e93cdacf-5119-4fc0-9a2a-f2430962c0ba" width="400" />
 <br>
 <br>
 <br>    
 
-5. 게시판 (2) - (INSERT)
+5. 게시판 (Board) (2) - (INSERT)
 
 <img src="https://github.com/user-attachments/assets/a1ab379e-be90-4cb7-aed3-6d19787f7129" width="400" /> <img src="https://github.com/user-attachments/assets/519cf868-d3bd-42ce-bab7-2a384f4db681" width="400" />
 <br>
 <br>
 <br>
 
-6. 게시판 (3) - (SELECT)
+6. 게시판 (Board) (3) - (SELECT)
 
 <img src="https://github.com/user-attachments/assets/4a23a46d-274a-4991-94a3-2f585aae464a" width="400" /> <img src="https://github.com/user-attachments/assets/a202080e-8c06-4112-9109-6a2680ee96dd" width="400" /> <img src="https://github.com/user-attachments/assets/76dce11f-863e-4eaf-a474-2049f16a7b52" width="400" /> <img src="https://github.com/user-attachments/assets/65a601c2-017c-47ba-80a7-63bb795f2852" width="400" />
 <br>
 <br>
 <br>
 
-7. 게시판 (4) - (UPDATE)
+7. 게시판 (Board) (4) - (UPDATE)
 
 <img src="https://github.com/user-attachments/assets/35148202-ee40-4b71-9d48-7e0b3de37e7a" width="400" /> <img src="https://github.com/user-attachments/assets/f844467c-368d-4985-92b0-4605f9b93b2b" width="400" />
 <br>
 <br>
 <br>
 
-8. 게시판 (5) - (DELETE)
+8. 게시판 (Board) (5) - (DELETE)
 
-![Image](https://github.com/user-attachments/assets/1f185970-e631-4c75-aed1-425c81993323)
+<img src="https://github.com/user-attachments/assets/4c7a373a-2c1c-49b9-983e-a8e8facd815d" width="400" /> <img src="https://github.com/user-attachments/assets/1f185970-e631-4c75-aed1-425c81993323" width="400" />
 <br>
 <br>
 <br>
 
-9. 게시판 댓글
+9. 게시판 댓글 (COMMENTS)
 
 <img src="https://github.com/user-attachments/assets/86b6b303-678e-4ad8-9934-38a5ce144a91" width="400" /> <img src="https://github.com/user-attachments/assets/49cfd5ed-492c-4c51-8fa4-6a0c65686f19" width="400" />
 <img src="https://github.com/user-attachments/assets/6e74784a-18c0-4b44-a3d8-d7c9b2d89ee8" width="400" />
@@ -113,23 +113,16 @@
 <br>
 <br>
 
-9. ⭐프로젝트 피드⭐ - 게시글 생성(할일)
+10. 게시판 좋아요 (LIKES)
 
-![todo](https://github.com/LeeMinSeong95/mySODAproject/assets/157666399/8ce51411-ca1e-45ac-8214-5130ef3d5fbd)
-<br>
-<br>
-<br>
-
-10. ⭐프로젝트 피드⭐ - 게시글 수정 및 삭제 / 댓글 로그
-
-![modify](https://github.com/LeeMinSeong95/mySODAproject/assets/157666399/bdb3f5dc-d62b-453f-aea4-b11e05a3bef0)
+<img src="https://github.com/user-attachments/assets/3761fd0f-5f0f-4544-a0a0-4b2c967a2606" width="400" /> <img src="https://github.com/user-attachments/assets/db7dd259-9fe8-46c5-9803-5283e098cc2f" width="400" /><img src="https://github.com/user-attachments/assets/1b07d288-fd68-42d8-a0c5-e5c30edcf70a" width="400" />
 <br>
 <br>
 <br>
 
-11. ⭐프로젝트 피드⭐ - 댓글 생성 및 수정,삭제 / 좋아요, 북마크
+11. 알림 (ALERT)
 
-![reply](https://github.com/LeeMinSeong95/mySODAproject/assets/157666399/2f918885-761d-43bf-aaff-35343315eb12)
+
 <br>
 <br>
 <br>
