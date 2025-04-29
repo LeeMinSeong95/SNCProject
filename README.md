@@ -37,11 +37,12 @@
    📱 IDE : <img src="https://img.shields.io/badge/IntelliJIDEA-000000?style=flat&logo=intellijidea&logoColor=white" /> / <img src="https://img.shields.io/badge/DBeaver-372923?style=flat&logo=dbeaver&logoColor=white" /> <br />
    🫙 DataBase : <img src="https://img.shields.io/badge/Oracle-F80000?style=flat&logo=Oracle&logoColor=white" /> <br />
    👥 Version Control : <img src="https://img.shields.io/badge/GitLab-FC6D26?style=flat&logo=GitLab&logoColor=white" /> <br />
-   🔨 Web Development Technologies : <img src="https://img.shields.io/badge/jQuery-0769AD?style=flat&logo=jquery&logoColor=white" /> / <img src="https://img.shields.io/badge/REST API-009688?style=flat&logoColor=white" /> / <img src="https://img.shields.io/badge/MyBatis-DB2B1C?style=flat&logoColor=white" /> / <img src="https://img.shields.io/badge/Thymeleaf-005F0F?style=flat&logoColor=white" /> / <img src="https://img.shields.io/badge/Ajax-4682B4?style=flat&logo=Ajax&logoColor=white" /> / <img src="https://img.shields.io/badge/HTML5-E34F26?style=flat&logo=HTML5&logoColor=white" /> / <img src="https://img.shields.io/badge/JavaScript-yellow?style=flat&logo=JavaScript&logoColor=white" /> / <img src="https://img.shields.io/badge/CSS3-1572B6?style=flat&logo=CSS3&logoColor=white" /> <br />
+   🔨 Web Development Technologies <br/>
+   <img src="https://img.shields.io/badge/jQuery-0769AD?style=flat&logo=jquery&logoColor=white" /> / <img src="https://img.shields.io/badge/REST API-009688?style=flat&logoColor=white" /> / <img src="https://img.shields.io/badge/MyBatis-DB2B1C?style=flat&logoColor=white" /> / <img src="https://img.shields.io/badge/Thymeleaf-005F0F?style=flat&logoColor=white" /> / <img src="https://img.shields.io/badge/Ajax-4682B4?style=flat&logo=Ajax&logoColor=white" /> / <img src="https://img.shields.io/badge/HTML5-E34F26?style=flat&logo=HTML5&logoColor=white" /> / <img src="https://img.shields.io/badge/JavaScript-yellow?style=flat&logo=JavaScript&logoColor=white" /> / <img src="https://img.shields.io/badge/CSS3-1572B6?style=flat&logo=CSS3&logoColor=white" /> <br />
    📊 Total Report <br/>
     <img src="https://github-readme-stats.vercel.app/api/pin/?username=LeeMinSeong95&repo=SNCProject" />
    
-7. SNS 안내 <br/>
+8. SNS 안내 <br/>
    <img src="https://img.shields.io/badge/gns_nim_95-E4405F?style=flat&logo=Instagram&logoColor=white"/>
    <img src="https://img.shields.io/badge/mmnwoo33@gmail.com-EA4335?style=flat&logo=Gmail&logoColor=white" />
    <img src="https://img.shields.io/badge/mmnwoo33@naver.com-03C75A?style=flat&logo=Naver&logoColor=white">
