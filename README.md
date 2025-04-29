@@ -93,7 +93,7 @@
 
 7. 게시판 (4) - (UPDATE)
 
-
+<img src="https://github.com/user-attachments/assets/35148202-ee40-4b71-9d48-7e0b3de37e7a" width="400" /> <img src="https://github.com/user-attachments/assets/f844467c-368d-4985-92b0-4605f9b93b2b" width="400" />
 <br>
 <br>
 <br>
