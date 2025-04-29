@@ -122,7 +122,8 @@
 
 11. 알림 (ALERT)
 
-
+<img src="https://github.com/user-attachments/assets/cefb0c49-6a46-4909-93a8-27e611a12d83" width="400" /> <img src="https://github.com/user-attachments/assets/da853ec8-8a84-40f5-962f-dd61dd6e94d3" width="400" />
+<img src="https://github.com/user-attachments/assets/8dc0bc60-cf46-4e0d-9f2f-547b63d5291d" width="400" /> <img src="https://github.com/user-attachments/assets/05945c8d-c2a4-40ee-b298-d6b18201a67b" width="400" />
 <br>
 <br>
 <br>
