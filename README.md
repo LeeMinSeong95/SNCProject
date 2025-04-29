@@ -71,7 +71,8 @@
 <br>
 
 4. 게시판 (1) - (main)
-<img src="https://github.com/user-attachments/assets/a1ab379e-be90-4cb7-aed3-6d19787f7129" width="400" /> <img src="https://github.com/user-attachments/assets/519cf868-d3bd-42ce-bab7-2a384f4db681" width="400" />
+
+<img src="https://github.com/user-attachments/assets/938c3b65-5826-4760-aa40-75b087898610" width="400" /> <img src="https://github.com/user-attachments/assets/2817c7e2-c707-4ee7-a2bc-68d05b10238f" width="400" /> <img src="https://github.com/user-attachments/assets/e93cdacf-5119-4fc0-9a2a-f2430962c0ba" width="400" />
 <br>
 <br>
 <br>    
