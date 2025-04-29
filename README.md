@@ -1,1 +1,151 @@
+<div align="center">
+  <img src="https://capsule-render.vercel.app/api?type=waving&color=auto&height=200&section=header&text=SNC%20Project&fontSize=50" />
+  <br />
+  <strong>(Stock And Coin Project)</strong>
+</div>
 
+# 📢 목차
+😀 자기소개 (self Introduction) <br />
+📑 프로젝트 개요 (Project Outline) <br />
+🔨 설계/프로세스 (Design/Process) <br />
+⭐ 구현 과정 (Implementation Process) <br />
+📌 DataBase ERD 
+
+# 😀 자기소개 (self Introduction)
+  1️⃣ 이름(한글명/영문명) : 이 민 성 / Lee Min Seong <br />
+  2️⃣ 생년 월일 : 1995년 10월 19일 <br />
+  3️⃣ 학력 : 2년제(초대졸) / 서영대학교 파주캠퍼스(3.71) <br />
+  4️⃣ 주소 : 서울특별시 강서구 금낭화로 287-19 <br />
+  5️⃣ 병역 사항: 육군 / 통신병(병장 만기전역) / 2015.08.04 - 2017.05.03 <br />
+
+# 📑 프로젝트 개요 (Project Outline)
+
+1. 프로젝트 명 : SNC Project (Stock And Coin Project)
+2. 프로젝트 기간 : 2025.02.17 ~ 2025.04.26 (약 2개월)
+3. 프로젝트 소개 : 투자에 주목하는 시대, 주식과 코인 투자자들을 위한 실시간 주식 및 코인 정보 제공, 게시판을 통한 사용자 간 정보 공유 그리고 알림 설정으로 빠르고 간편한 알림 받기로 주식 정보를 한 눈에! 
+4. 프로젝트 인원 : 3명
+5. 프로젝트 주요 기능 <br />
+   💠 WebSocket <br />
+   💠 Rest API <br />
+   💠 Spring Security <br />
+   💠 Board <br />
+   💠 Alert <br />
+
+6. 프로젝트 사용 기술 스택 <br />
+   ⚙️ Programming Language : <img src="https://img.shields.io/badge/Java-007396?style=flat&logo=Java&logoColor=white" /> <br />
+   🖥️ Server Framework : <img src="https://img.shields.io/badge/SpringBoot-6DB33F?style=flat&logo=springboot&logoColor=white" /> <br />
+   📱 IDE : <img src="https://img.shields.io/badge/IntelliJIDEA-000000?style=flat&logo=intellijidea&logoColor=white" /> / <img src="https://img.shields.io/badge/DBeaver-372923?style=flat&logo=dbeaver&logoColor=white" /> <br />
+   🫙 DataBase : <img src="https://img.shields.io/badge/Oracle-F80000?style=flat&logo=Oracle&logoColor=white" /> <br />
+   👥 Version Control : <img src="https://img.shields.io/badge/GitLab-FC6D26?style=flat&logo=GitLab&logoColor=white" /> <br />
+   🔨 Web Development Technologies : <img src="https://img.shields.io/badge/jQuery-0769AD?style=flat&logo=jquery&logoColor=white" /> / <img src="https://img.shields.io/badge/REST API-009688?style=flat&logoColor=white" /> / <img src="https://img.shields.io/badge/MyBatis-DB2B1C?style=flat&logoColor=white" /> / <img src="https://img.shields.io/badge/Thymeleaf-005F0F?style=flat&logoColor=white" /> / <img src="https://img.shields.io/badge/Ajax-4682B4?style=flat&logo=Ajax&logoColor=white" /> / <img src="https://img.shields.io/badge/HTML5-E34F26?style=flat&logo=HTML5&logoColor=white" /> / <img src="https://img.shields.io/badge/JavaScript-yellow?style=flat&logo=JavaScript&logoColor=white" /> / <img src="https://img.shields.io/badge/CSS3-1572B6?style=flat&logo=CSS3&logoColor=white" /> <br />
+   📊 Total Report <br/>
+    <img src="https://github-readme-stats.vercel.app/api/pin/?username=LeeMinSeong95&repo=SNCProject" />
+   
+7. SNS 안내 <br/>
+   <img src="https://img.shields.io/badge/gns_nim_95-E4405F?style=flat&logo=Instagram&logoColor=white"/>
+   <img src="https://img.shields.io/badge/mmnwoo33@gmail.com-EA4335?style=flat&logo=Gmail&logoColor=white" />
+   <img src="https://img.shields.io/badge/mmnwoo33@naver.com-03C75A?style=flat&logo=Naver&logoColor=white">
+   <br> 
+
+# ⏱ Function Implementation
+
+1. 로그인 & 회원가입
+
+![SODA_L_J](https://github.com/LeeMinSeong95/mySODAproject/assets/157666399/a35c031b-66aa-4859-9956-11af54364b64)
+<br>
+<br>
+<br>
+
+2. 대시보드
+
+![SODA_Dash](https://github.com/LeeMinSeong95/mySODAproject/assets/157666399/4b1c192a-9ce4-4aa7-b1d9-f1bc56112868)
+<br>
+<br>
+<br>
+
+3. ⭐검색바⭐ - 프로젝트, 게시글, 파일 검색
+
+![Searchbar](https://github.com/LeeMinSeong95/mySODAproject/assets/157666399/0dfbacb1-e971-4ab9-8540-96fd9572f83f)
+<br>
+<br>
+<br>
+
+4. ⭐프로젝트 피드⭐ - 옵션1(색상, 폴더, 나가기, 삭제)
+
+![Project_option1](https://github.com/LeeMinSeong95/mySODAproject/assets/157666399/d107ec45-15d6-4841-abbb-e8262ace80c5)
+<br>
+<br>
+<br>
+
+5. ⭐프로젝트 피드⭐ - 옵션2(임직원 초대하기, 참여자 검색)
+
+![invite](https://github.com/LeeMinSeong95/mySODAproject/assets/157666399/f19a1ac8-5083-492e-8155-1387a53966ea)
+<br>
+<br>
+<br>
+
+6. ⭐프로젝트 피드⭐ - 게시글 생성(글)
+
+![post](https://github.com/LeeMinSeong95/mySODAproject/assets/157666399/de6ecb9c-f769-438c-9141-adb5c938a791)
+<br>
+<br>
+<br>
+
+7. ⭐프로젝트 피드⭐ - 게시글 생성(업무) 및 업무리포트
+
+![work](https://github.com/LeeMinSeong95/mySODAproject/assets/157666399/121e91aa-ca9b-4a4d-a5dd-c055c759fa1d)
+<br>
+<br>
+<br>
+
+8. ⭐프로젝트 피드⭐ - 게시글 생성(일정)
+
+![schedule](https://github.com/LeeMinSeong95/mySODAproject/assets/157666399/a2f9ba15-d59b-4d97-b622-1c46b8ee5869)
+<br>
+<br>
+<br>
+
+9. ⭐프로젝트 피드⭐ - 게시글 생성(할일)
+
+![todo](https://github.com/LeeMinSeong95/mySODAproject/assets/157666399/8ce51411-ca1e-45ac-8214-5130ef3d5fbd)
+<br>
+<br>
+<br>
+
+10. ⭐프로젝트 피드⭐ - 게시글 수정 및 삭제 / 댓글 로그
+
+![modify](https://github.com/LeeMinSeong95/mySODAproject/assets/157666399/bdb3f5dc-d62b-453f-aea4-b11e05a3bef0)
+<br>
+<br>
+<br>
+
+11. ⭐프로젝트 피드⭐ - 댓글 생성 및 수정,삭제 / 좋아요, 북마크
+
+![reply](https://github.com/LeeMinSeong95/mySODAproject/assets/157666399/2f918885-761d-43bf-aaff-35343315eb12)
+<br>
+<br>
+<br>
+
+12. ⭐프로젝트 피드⭐ - 프로필
+
+![Profile](https://github.com/LeeMinSeong95/mySODAproject/assets/157666399/ad426c6d-d2aa-4213-bed9-a5c57bccda5a)
+<br>
+<br>
+<br>
+
+13. 좌측바
+
+![SODA_Sidebar](https://github.com/LeeMinSeong95/mySODAproject/assets/157666399/1eab1497-afe1-45c1-83ca-ff468ab9a071)
+<br>
+<br>
+<br>
+
+14. 관리자 페이지
+
+![SODA_Ad](https://github.com/LeeMinSeong95/mySODAproject/assets/157666399/00902e56-1527-4666-b04b-a67fc87e2bf7)
+<br>
+<br>
+<br>
+
+# 🛢DataBase ERD
+![SODA_ERD](https://github.com/LeeMinSeong95/mySODAproject/assets/157666399/71aecd64-0282-4f7d-b42b-f9221e7be350)
