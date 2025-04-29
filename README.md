@@ -10,13 +10,17 @@
 🔨 설계/프로세스 (Design/Process) <br />
 ⭐ 구현 기능 (Implementation Function) <br />
 📌 DataBase ERD 
+<br/>
+<br/>
 
 # 😀 자기소개 (self Introduction)
   1️⃣ 이름(한글명/영문명) : 이 민 성 / Lee Min Seong <br />
   2️⃣ 생년 월일 : 1995년 10월 19일 <br />
   3️⃣ 학력 : 2년제(초대졸) / 서영대학교 파주캠퍼스(3.71) <br />
   4️⃣ 주소 : 서울특별시 강서구 금낭화로 287-19 <br />
-  5️⃣ 병역 사항: 육군 / 통신병(병장 만기전역) / 2015.08.04 - 2017.05.03 <br />
+  5️⃣ 병역 사항: 육군 / 통신병(병장 만기전역) / 2015.08.04 - 2017.05.03 
+<br/>
+<br/>
 
 # 📑 프로젝트 개요 (Project Outline)
 
@@ -29,7 +33,7 @@
    💠 Rest API <br />
    💠 Spring Security <br />
    💠 Board <br />
-   💠 Alert <br />
+   💠 Alert <br/>  
 
 6. 프로젝트 사용 기술 스택 <br />
    ⚙️ Programming Language : <img src="https://img.shields.io/badge/Java-007396?style=flat&logo=Java&logoColor=white" /> <br />
@@ -40,13 +44,14 @@
    🔨 Web Development Technologies <br/>
    <img src="https://img.shields.io/badge/jQuery-0769AD?style=flat&logo=jquery&logoColor=white" /> / <img src="https://img.shields.io/badge/REST API-009688?style=flat&logoColor=white" /> / <img src="https://img.shields.io/badge/MyBatis-DB2B1C?style=flat&logoColor=white" /> / <img src="https://img.shields.io/badge/Thymeleaf-005F0F?style=flat&logoColor=white" /> / <img src="https://img.shields.io/badge/Ajax-4682B4?style=flat&logo=Ajax&logoColor=white" /> / <img src="https://img.shields.io/badge/HTML5-E34F26?style=flat&logo=HTML5&logoColor=white" /> / <img src="https://img.shields.io/badge/JavaScript-yellow?style=flat&logo=JavaScript&logoColor=white" /> / <img src="https://img.shields.io/badge/CSS3-1572B6?style=flat&logo=CSS3&logoColor=white" /> <br />
    📊 Total Report <br/>
-    <img src="https://github-readme-stats.vercel.app/api/pin/?username=LeeMinSeong95&repo=SNCProject" />
+    ![Top Langs](https://github-readme-stats.vercel.app/api/top-langs/?username=LeeMinSeong95&layout=compact&theme=tokyonight) <br/>
    
-8. SNS 안내 <br/>
+7. SNS 안내 <br/>
    <img src="https://img.shields.io/badge/gns_nim_95-E4405F?style=flat&logo=Instagram&logoColor=white"/>
    <img src="https://img.shields.io/badge/mmnwoo33@gmail.com-EA4335?style=flat&logo=Gmail&logoColor=white" />
    <img src="https://img.shields.io/badge/mmnwoo33@naver.com-03C75A?style=flat&logo=Naver&logoColor=white">
-   <br>
+<br/>
+<br/>
 
 # 🔨 설계/프로세스 (Design/Process) <br/>
 <h2>프로젝트 기획</h2> <br/>
