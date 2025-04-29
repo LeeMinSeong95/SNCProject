@@ -181,7 +181,7 @@
 
 # 🎥 Video
 ## 영상 (1) : 메인페이지, 로그인, 회원가입, 게시판  
-![Demo1](https://raw.githubusercontent.com/LeeMinSeong95/SNCProject/main/SNC-Project-_1_gif_.gif)
+![Demo1](./SNC-Project-_1_gif_.gif)
 
 ## 영상 (2) : 즐겨찾기, 알림  
-![Demo2](https://raw.githubusercontent.com/LeeMinSeong95/SNCProject/main/SNC-Project-_2_gif_.gif)
+![Demo2](./SNC-Project-_2_gif_.gif)
