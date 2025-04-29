@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>실시간 시세</title>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" th:href="@{/css/navigation/sideBar.css}">
+    <link rel="stylesheet" th:href="@{/css/home/home.css}">
+    <!--WebSocket 관련 라이브러리 -->
+    <script src="https://cdn.jsdelivr.net/npm/sockjs-client@1/dist/sockjs.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/stompjs@2.3.3/lib/stomp.min.js"></script>
+</head>
+<body>
+<div th:replace="~{navigation/navbar :: navbar}"></div>
+<div th:if="${nickname}" class="nickname-container">
+    <p><span th:text="${nickname}"></span>님 환영합니다!</p>
+</div>
+
+<!-- ✅ 로그아웃 버튼 영역 (배경색 X, 아이콘 + 텍스트만 표시) -->
+<div th:if="${nickname}" class="logout-container">
+    <form th:action="@{/logout}" method="post" class="logout-form">
+        <button type="submit" class="logout-btn">
+            <span>로그아웃</span>
+        </button>
+    </form>
+</div>
+
+<div class="search-container">
+    <div class="search-box">
+        <select class="search-options" id="searchOptions">
+            <option value="" selected disabled>옵션 선택</option>
+            <option value="news">뉴스</option>
+            <option value="chart">차트</option>
+        </select>
+        <input type="text" id="searchInput" placeholder="검색어를 입력하세요..."/>
+        <button type="button" class="search-btn" id="searchBtn">🔍</button>
+    </div>
+</div>
+
+<div class="ticker-container">
+    <div class="ticker-wrap">
+        <div class="ticker">
+            <div th:each="item : ${MarketData}">
+                <span>
+                <span th:text="${item.name}"></span> :
+                <span class="ticker-item"
+                      th:classappend="${item.subprice eq '0'} ? 'negative' : (${item.subprice eq '1'} ? 'positive' : '')"
+                      th:text="${item.nowprice}"></span>
+
+                </span>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="contentWrap">
+    <div class="tables-container">
+        <!-- 코인 정보 테이블 -->
+
+        <div class="table-wrapper">
+            <table class="data-table" id="coinTable">
+                <caption>코인 정보</caption>
+                <thead>
+                <tr>
+                    <th>코인명</th>
+                    <th>변동금액</th>
+                    <th>변동률</th>
+                    <th>시세</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each="coin : ${CoinList}">
+                    <td th:text="${coin.stockName}"></td>
+
+                    <td th:classappend="${coin.prdyvrss > 0} ? 'positive' : 'negative'"
+                        th:text="${coin.formattedPrdyvrss}">
+                    </td>
+
+                    <td th:classappend="${coin.prdyctrt > 0} ? 'positive' : 'negative'"
+                        th:text="${coin.prdyctrt} + '%'">
+                    </td>
+
+                    <td class="price" th:text="${coin.formattedStckprpr}"></td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="table-wrapper">
+            <!-- 한국 주식 정보 테이블 -->
+            <table class="data-table" id="krStockTable">
+                <caption>한국 주식 정보</caption>
+                <thead>
+                <tr>
+                    <th>종목명</th>
+                    <th>변동금액</th>
+                    <th>변동률</th>
+                    <th>시세</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each="stock : ${stockList}">
+                    <td th:text="${stock.stockName}"></td>
+
+                    <td th:classappend="${stock.prdyvrss > 0} ? 'positive' : 'negative'"
+                        th:text="${stock.formattedPrdyvrss}">
+                    </td>
+
+                    <!-- 변동률 -->
+                    <td th:classappend="${stock.prdyctrt > 0} ? 'positive' : 'negative'"
+                        th:text="${stock.prdyctrt} + '%'">
+                    </td>
+
+                    <td class="price" th:text="${stock.formattedStckprpr}"></td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="table-wrapper">
+            <!-- 미국 주식 정보 테이블 -->
+            <table class="data-table" id="usaStockTable">
+                <caption>미국 주식 정보</caption>
+                <thead>
+                <tr>
+                    <th>종목명</th>
+                    <th>변동금액</th>
+                    <th>변동률</th>
+                    <th>시세</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each="stock : ${USAstockList}">
+                    <td th:text="${stock.stockName}"></td>
+
+                    <!-- 변동금액 -->
+                    <td th:classappend="${stock.prdyvrss > 0} ? 'positive' : 'negative'"
+                        th:text="'$' + ${stock.prdyvrss}">
+                    </td>
+
+                    <!-- 변동률 -->
+                    <td th:classappend="${stock.prdyctrt > 0} ? 'positive' : 'negative'"
+                        th:text="${stock.prdyctrt} + '%'">
+                    </td>
+
+                    <td class="price" th:text="'$' + ${stock.stckprpr}"></td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+
+    </div>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script th:src="@{/js/websocket/websocket.js}"></script>
+<script th:src="@{/js/chartNews/searchResult.js}"></script>       <!--화면 다 로드 된 수 script 적용될수있도록 -->
+</body>
+</html>
+
+

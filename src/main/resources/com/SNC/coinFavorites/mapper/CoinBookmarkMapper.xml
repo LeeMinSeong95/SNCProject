@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.SNC.coinFavorites.mapper.CoinBookmarkMapper">
+
+    <!-- 특정 회원이 즐겨찾기한 코인 정보를 조회 -->
+    <!-- memberId : 1, 2, ...이런식    -->
+    <select id="selectBookmarkedCoinsByMember" parameterType="int" resultType="com.SNC.coinFavorites.vo.CoinInfoVo">
+        SELECT c.COIN_ID,
+               c.COIN_MARK_NM,
+               c.COIN_KR_NM,
+               c.COIN_ENG_NM,
+               b.MARK_YN
+        FROM BOOKMARK b
+                 JOIN COIN c ON b.COIN_ID = c.COIN_ID
+        WHERE b.MBR_CD = #{memberId}
+    </select>
+
+</mapper>

@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="_csrf" th:content="${_csrf.token}"/>
+    <meta name="_csrf_header" th:content="${_csrf.headerName}"/>
+    <title>게시판 사이드바</title>
+</head>
+<body>
+
+<!-- ✅ 네비게이션 바를 fragment로 정의 -->
+<div th:fragment="boardNavbar">
+
+    <div class="boardNav-nav">
+        <div class="boardNav-item">
+            <select name="mainType" class="boardSearch-main-options">
+                <option value="00">옵션 선택</option>
+                <option value="0">국내 주식</option>
+                <option value="1">해외 주식</option>
+                <option value="2">코인</option>
+                <option value="3">익명</option>
+                <option value="4">QnA</option>
+            </select>
+
+            <select name="subType" class="boardSearch-sub-options">
+                <option value="00">옵션 선택</option>
+                <option value="0">닉네임</option>
+                <option value="1">제목</option>
+                <option value="2">내용</option>
+                <option value="3">글번호</option>
+                <option value="4">기간</option>
+            </select>
+
+            <input type="text" id="searchInput" placeholder="검색어를 입력해주세요...">
+            <div id="dateSearchWrap" style="display:none;">
+              <input type="date" id="startDate"> <p>-</p> <input type="date" id="endDate">
+            </div>
+            <button type="button" class="boardSearch-btn" id="BoardSearchBtn">🔍</button>
+        </div>
+    </div>
+
+    <!-- 검색 시 나오는 검색 팝업 -->
+    <div class="board-search-wrap" style="display:none;"> <!-- 전체 크기 -->
+        <div class="board-search-box"> <!-- 컨텐츠 감싸는 크기 -->
+
+            <div class="search-header-close">
+                <h1 class="board-search-header">검색 결과</h1>
+                <button type="button" class="search-close-btn">
+                    <span class="search-close-span">X</span>
+                </button>
+            </div>
+
+            <!-- column 영역 -->
+            <div class="board-search-after">
+                <table>
+                    <thead>
+                    <tr>
+                        <td style="width:90px;">글번호</td>
+                        <td style="width:90px; padding-left:5px;">주제</td>
+                        <td style="width:125px;">제목</td>
+                        <td style="width:120px; padding-left:83px;">닉네임</td>
+                        <td style="width:100px; padding-left:145px;">작성일시</td>
+                    </tr>
+                    </thead>
+                </table>
+            </div>
+
+            <!-- column 영역 & List 영역 나누는 선 -->
+            <hr style="width: 830px;margin: 20px 0px 20px 60px;">
+
+            <!-- th List 영역 -->
+            <div class="search-list-area">
+                <table class="search-table-list">
+                    <tbody id="search-tbodys" name="search-tbodys">
+                        <!-- 동적으로 들어올 영역 -->
+                    </tbody>
+                </table>
+            </div>
+
+        </div>
+
+        <!-- 닫기 버튼 -->
+        <div class="close-btn-wrap2">
+            <button class="close-btn-2">닫기</button>
+        </div>
+    </div>
+
+</div>
+
+</body>
+</html>

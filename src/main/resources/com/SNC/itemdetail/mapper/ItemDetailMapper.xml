@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.SNC.itemdetail.mapper.ItemDetailMapper">
+
+    <select id="findAllKrStock" resultType="com.SNC.itemdetail.vo.DetailInfoDto">
+        <![CDATA[
+            SELECT KRSTOCK_MARK_NM AS itemMarkNm, KRSTOCK_KR_NM AS itemKrNm, KRSTOCK_ID AS itemId
+             FROM (
+              SELECT a.*, ROWNUM rnum
+              FROM (
+                SELECT *
+                FROM KRSTOCK
+                ORDER BY TO_NUMBER(KRSTOCK_ID) ASC
+              ) a
+              WHERE ROWNUM <= #{offset} + 20
+            )
+            WHERE rnum > #{offset}
+        ]]>
+    </select>
+
+    <select id="findAllUsStock" resultType="com.SNC.itemdetail.vo.DetailInfoDto">
+        <![CDATA[
+            SELECT USSTOCK_MARK_NM AS itemMarkNm, USSTOCK_KR_NM AS itemKrNm, USSTOCK_ID AS itemId
+             FROM (
+              SELECT a.*, ROWNUM rnum
+              FROM (
+                SELECT *
+                FROM USSTOCK
+                ORDER BY TO_NUMBER(USSTOCK_ID) ASC
+              ) a
+              WHERE ROWNUM <= #{offset} + 20
+            )
+            WHERE rnum > #{offset}
+        ]]>
+    </select>
+
+    <select id="findKrStockSymbol" resultType="String">
+        SELECT KRSTOCK_MARK_NM
+        FROM KRSTOCK
+        WHERE 1=1
+        AND KRSTOCK_KR_NM = #{stockName}
+    </select>
+
+    <select id="findUsaStockSymbol" resultType="String">
+        SELECT USSTOCK_MARK_NM
+        FROM USSTOCK
+        WHERE 1=1
+        AND USSTOCK_KR_NM = #{stockName}
+    </select>
+
+    <select id="findCoinSymbol" resultType="String">
+        SELECT COIN_MARK_NM
+        FROM COIN
+        WHERE 1=1
+        AND COIN_KR_NM = #{coinName}
+    </select>
+
+    <select id="searchByKeyword" resultType="com.SNC.itemdetail.vo.DetailInfoDto">
+        SELECT KRSTOCK_MARK_NM AS itemMarkNm, KRSTOCK_KR_NM AS itemKrNm, KRSTOCK_ID AS itemId
+        FROM KRSTOCK
+        WHERE 1=1
+        AND KRSTOCK_KR_NM LIKE '%' || #{keyword} || '%'
+    </select>
+
+    <select id="searchByUsKeyword" resultType="com.SNC.itemdetail.vo.DetailInfoDto">
+        SELECT USSTOCK_MARK_NM AS itemMarkNm, USSTOCK_KR_NM AS itemKrNm, USSTOCK_ID AS itemId
+        FROM USSTOCK
+        WHERE 1=1
+        AND USSTOCK_KR_NM LIKE '%' || #{keyword} || '%'
+    </select>
+
+    <select id="searchByCoinKeyword" resultType="com.SNC.itemdetail.vo.DetailInfoDto">
+        SELECT COIN_MARK_NM AS itemMarkNm, COIN_KR_NM AS itemKrNm, COIN_ID AS itemId
+        FROM COIN
+        WHERE 1=1
+        AND COIN_KR_NM LIKE '%' || #{keyword} || '%'
+    </select>
+
+    <select id="findAllCoins" resultType="com.SNC.itemdetail.vo.DetailInfoDto">
+        <![CDATA[
+            SELECT COIN_MARK_NM AS itemMarkNm, COIN_KR_NM AS itemKrNm, COIN_ID AS itemId
+             FROM (
+              SELECT a.*, ROWNUM rnum
+              FROM (
+                SELECT *
+                FROM COIN
+                ORDER BY COIN_ID ASC
+              ) a
+              WHERE ROWNUM <= #{offset} + 20
+            )
+            WHERE rnum > #{offset}
+        ]]>
+
+    </select>
+
+    <select id="findBookMark" resultType="java.lang.Integer">
+        SELECT COUNT(*)
+        FROM BOOKMARK
+        WHERE ITEM_TYPE = #{itemType}
+        AND ITEM_ID = #{itemId}
+        AND MBR_CD = #{mbrId}
+        AND MARK_YN = 'Y'
+    </select>
+    <select id="findBookMarkHistory" resultType="java.lang.Integer">
+        SELECT COUNT(*)
+        FROM BOOKMARK
+        WHERE ITEM_TYPE = #{itemType}
+        AND ITEM_ID = #{itemId}
+        AND MBR_CD = #{mbrId}
+    </select>
+
+    <insert id="insertBookMark">
+        INSERT INTO
+        BOOKMARK(MARK_ID,MBR_CD,ITEM_TYPE,ITEM_ID,MARK_YN,REG_DT,MDFCN_DT)
+        VALUES  (BOOKMARK_SEQ.NEXTVAL, #{mbrId},#{itemType}, #{itemId},'Y',SYSDATE,SYSDATE)
+    </insert>
+
+    <update id="updateBookMark">
+        UPDATE BOOKMARK
+        SET MARK_YN = #{favoriteYN},MDFCN_DT = SYSDATE
+        WHERE ITEM_ID = #{itemId}
+        AND ITEM_TYPE = #{itemType}
+        AND MBR_CD = #{mbrId}
+    </update>
+
+</mapper>

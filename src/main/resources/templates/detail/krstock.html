@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="_csrf" th:content="${_csrf.token}" />
+    <meta name="_csrf_header" th:content="${_csrf.headerName}" />
+    <title>한국 주식 정보</title>
+    <script
+            type="text/javascript"
+            src="https://unpkg.com/lightweight-charts@4.2.1/dist/lightweight-charts.standalone.production.js"
+    ></script>
+    <link rel="stylesheet" th:href="@{/css/itemdetail/krstock.css}">
+    <link rel="stylesheet" th:href="@{/css/navigation/sideBar.css}">
+</head>
+<body>
+<div th:replace="~{navigation/navbar :: navbar}"></div>
+<div th:if="${nickname}" class="nickname-container">
+    <p><span th:text="${nickname}"></span>님 환영합니다!</p>
+</div>
+<div th:if="${nickname}" class="logout-container">
+    <form th:action="@{/logout}" method="post" class="logout-form">
+        <button type="submit" class="logout-btn">
+            <span>로그아웃</span>
+        </button>
+    </form>
+</div>
+
+<div th:replace="~{search/searchbar :: searchbar}"></div>
+
+<div class="custom-search-container">
+    <input type="text" id="tableFilterInput" placeholder="종목명을 검색하세요..." />
+    <button type="button" id="tableFilterBtn">검색</button>
+</div>
+<!-- 메인 컨테이너: 왼쪽은 스크롤 가능한 테이블, 오른쪽은 차트 영역 -->
+<div class="main-container">
+    <!-- 왼쪽: 스크롤 가능한 한국 주식 테이블 -->
+    <div class="table-container">
+        <!-- 테이블용 검색바 추가 -->
+
+        <table class="data-table" id="krStockTable" data-chart-type="kr">
+            <caption>한국 주식 정보</caption>
+            <thead>
+            <tr>
+                <th>종목명</th>
+                <th>종가</th>
+                <th>변동금액</th>
+                <th>변동률</th>
+                <th style="width: 60px;">즐겨찾기</th>
+            </tr>
+            </thead>
+            <tbody>
+            <!-- Thymeleaf를 통해 초기 데이터 렌더링 (무한 스크롤 이후 AJAX로 추가) -->
+            <tr th:each="stock : ${infoList}">
+                <td class="stock-item" th:text="${stock.name}"
+                    th:attr="data-item-id=${stock.itemId}">
+                </td>
+                <td th:text="${stock.nowprice} + '원'"></td>
+                <td th:text="${stock.subprice} + '원'"></td>
+                <td th:text="${stock.subratio} + '%'"></td>
+                <td style="text-align: center; width: 60px;">
+                    <button class="bookmark-btn"
+                            style="background: transparent; border: none; color: #FFD700; font-size: 18px; cursor: pointer; padding: 0;">
+                        <span th:text="${stock.checkBkMrk} ? '⭐' : '☆'" th:attr="data-favorite=${stock.checkBkMrk}"></span>
+                    </button>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+        <div id="loading" style="display:none; text-align:center; padding:10px;">Loading...</div>
+    </div>
+
+    <div id="chart" style="width: 820px;height: 690px;"></div>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<!-- 디테일 차트, 검색 -->
+<script th:src="@{/js/detail/Chart.js}"></script>
+<script th:src="@{/js/chartNews/searchResult.js}"></script>
+<!-- 즐겨찾기 -->
+<script th:src="@{/js/detail/favorite.js}"></script>
+</body>
+</html>

@@ -1,0 +1,130 @@
+@charset "UTF-8";
+
+.sidebar {
+    height: 83vh;
+    width: 50px;
+    position: fixed;
+    top: 150px;
+    left: 10px;
+    background: rgba(40, 40, 40, 0.4);
+    backdrop-filter: blur(10px);
+    color: white;
+    padding-top: 10px;
+    z-index: 1000;
+    border-radius: 10px;
+    transition: width 0.3s ease-in-out;
+    box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.2);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* ✅ 호버 시 사이드바 확장 */
+.sidebar:hover {
+    width: 150px;
+}
+
+/* ✅ 프로필 섹션 */
+.profile-section {
+    text-align: center;
+    padding: 10px 0;
+}
+
+.profile-section img {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    border: 2px solid white;
+    margin-bottom: 5px;
+}
+
+.profile-section .nickname {
+    font-size: 14px;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease-in-out, visibility 0.3s ease-in-out;
+}
+
+/* ✅ 사이드바 확장 시 닉네임 표시 */
+.sidebar:hover .nickname {
+    opacity: 1;
+    visibility: visible;
+}
+
+/* ✅ 구분선 */
+.sidebar .divider {
+    width: 80%;
+    height: 2px;
+    background: rgba(255, 255, 255, 0.3);
+    margin: 10px auto;
+}
+
+/* ✅ 메뉴 리스트 */
+.sidebar ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    width: 100%;
+}
+
+/* ✅ 메뉴 아이템 기본 설정 */
+.sidebar ul li {
+    width: 100%; /* 🔹 부모 요소 (사이드바) 크기와 맞춤 */
+    height: 55px;
+    padding: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease-in-out;
+    border-radius: 8px;
+    box-sizing: border-box;
+    overflow: hidden;
+}
+
+/* ✅ 호버 시 배경색이 정확히 맞도록 조정 */
+.sidebar ul li:hover {
+    background: rgba(255, 255, 255, 0.1);
+    width: 93%; /* 🔹 hover 시에도 너비를 100% 유지 */
+    transform: translateX(5px); /* 🔹 자연스럽게 이동 */
+    box-sizing: border-box;
+}
+
+/* ✅ 메뉴 링크 */
+.sidebar a {
+    display: flex;
+    align-items: center;
+    color: white;
+    text-decoration: none;
+    font-size: 14px;
+    width: 100%;
+    padding: 5px 10px;
+    transition: opacity 0.2s ease-in-out;
+    gap: 10px;
+}
+
+/* ✅ 아이콘 */
+.menu-icon {
+    width: 24px;
+    height: 24px;
+    transition: transform 0.3s ease-in-out;
+}
+
+.sidebar a span {
+    opacity: 0;
+    visibility: hidden;
+    transform: translateX(-10px);
+    transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out;
+}
+
+.sidebar:hover ul li {
+    justify-content: flex-start;
+}
+
+.sidebar:hover a span {
+    visibility: visible; /* → 즉시 변경 */
+    opacity: 1;
+    transform: translateX(0); /* → 자연스럽게 제자리로 이동 */
+    transition-delay: 0.1s; /* → 살짝 지연을 줘서 부드럽게 나타남 */
+}
+
+

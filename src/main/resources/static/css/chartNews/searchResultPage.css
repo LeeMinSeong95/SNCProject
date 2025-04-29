@@ -1,0 +1,86 @@
+/* 다크 모드 기본 */
+body {
+    background-color: #121212;
+    color: #ffffff;
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 20px;
+}
+
+.container {
+    max-width: 800px;
+    margin: auto;
+}
+
+/* 제목 스타일 */
+.title {
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.highlight {
+    color: orange;
+}
+
+/* 1) 뉴스 리스트 초기화 + flex 정렬 */
+.news-list {
+    list-style: none;   /* 기본 불릿 제거 */
+    margin: 0;          /* 기본 margin 제거 */
+    padding: 0;         /* 기본 padding 제거 */
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+/* 2) 각 뉴스 아이템 */
+.news-item {
+    display: flex;              /* 이미지와 텍스트 영역을 가로로 배치 */
+    align-items: center;        /* 세로 정렬 가운데 */
+    background-color: #1e1e1e;
+    padding: 10px;
+    border-radius: 8px;
+    transition: background 0.3s;
+}
+
+/* 마우스 오버 시 배경 색상 */
+.news-item:hover {
+    background-color: #292929;
+}
+
+/* 3) 이미지 스타일 */
+.news-item img {
+    width: 100px;       /* 썸네일 가로 크기 */
+    height: 70px;       /* 썸네일 세로 크기 */
+    object-fit: cover;  /* 이미지가 영역에 꽉 차도록 */
+    border-radius: 5px;
+    margin-right: 15px; /* 이미지와 텍스트 사이 간격 */
+}
+
+/* 4) 텍스트 영역 */
+.news-content {
+    flex-grow: 1;       /* 남은 영역을 텍스트가 차지하도록 */
+}
+
+/* 5) 제목, 설명, 링크 등 */
+.news-title {
+    font-size: 16px;
+    margin: 0;          /* 기본 margin 제거 */
+    font-weight: bold;
+}
+
+.news-description {
+    font-size: 13px;
+    margin: 5px 0;      /* 제목과 간격 */
+    color: #b0b0b0;
+}
+
+/* 링크를 별도 스타일링하고 싶다면 */
+.news-content a {
+    font-size: 12px;
+    color: #4d90fe;     /* 원하는 색상으로 변경 */
+    text-decoration: underline; /* 밑줄 표시 */
+    display: block;     /* 줄바꿈 효과 (옵션) */
+    margin-top: 5px;    /* 간격 */
+}

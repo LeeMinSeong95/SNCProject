@@ -1,0 +1,230 @@
+@charset "UTF-8";
+
+/* 전체적인 body 스타일 */
+body {
+    background-color: #1E1E1E; /* 다크모드 배경 */
+    color: #E0E0E0; /* 밝은 글씨 */
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+}
+
+/* 메인 콘텐츠 영역 여백 */
+.main-container {
+    margin-top: 50px;
+    padding: 20px;
+}
+
+.week-board-container{
+    position: absolute;
+    left: 875px;
+    top: 265px;
+}
+
+/* 머릿말 위치*/
+.board-header {
+    margin: 50px 20px 20px 65px;
+    font-size: 24px;
+    color: #FFA500;
+}
+.week-board-header{
+    margin: 31px 20px 20px 65px;
+    font-size: 24px;
+    color: #FFA500;
+}
+
+.board-search-header{
+    font-size: 24px;
+    color: #FFA500;
+    margin: 25px 0px 10px 65px;
+}
+
+
+
+
+/* ----- 게시판 체크박스,타입,글제목 등 column 부분 ----- */
+/* 게시판 column 영역 */
+.board-area {
+    margin-top:40px;
+    border-collapse: collapse;
+    background-color: #2A2A2A;
+    border-radius: 12px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    width: 800px;
+    height: 45px;
+    padding-top: 20px;
+    margin-left: 65px;
+    text-align: end;
+}
+
+.week-board-area{
+    margin-top: 41px;
+    border-collapse: collapse;
+    background-color: #2A2A2A;
+    border-radius: 12px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    width: 540px;
+    height: 45px;
+    padding-top: 20px;
+    margin-left: 65px;
+    text-align: end;
+}
+
+.board-search-after{
+    margin-top: 41px;
+    border-collapse: collapse;
+    background-color: #2A2A2A;
+    border-radius: 12px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    width: 820px;
+    height: 45px;
+    padding-top: 20px;
+    margin-left: 65px;
+    text-align: end;
+}
+
+/* 게시판 화면 글쓰기, 삭제 버튼 영역*/
+#IAndDArea {
+    margin: 20px 0px 0px 765px;
+}
+
+
+
+/* 게시판 이동 탭  */
+
+#boardTypeArea{
+    display: flex;
+    width: 700px;
+    padding: 40px;
+    border-radius: 12px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    text-align: center;
+    background-color: #2A2A2A;
+    font-size: 25px;
+    color: #30E3CA;
+    margin-left: 365px;
+    justify-content: center;
+}
+
+/* 각 탭 영역 */
+#boardStockTap{
+    margin: 0px 100px 0px 0px;
+}
+
+#boardCoinTap {
+    margin: 0px 100px 0px 25px;
+}
+
+#boardAnonymTap{
+    margin: 0px 0px 0px 20px;
+}
+
+
+/* 글쓰기 버튼 */
+#insertMoveBtn{
+    background-color: #FFA500;
+    color: #1E1E1E;
+    width: 100px;
+    height: 50px;
+    border-radius: 10px;
+    font-family: 'Arial', sans-serif;
+}
+
+/* 게시판 th list 영역 */
+#tableList{
+    border-collapse: collapse;
+    background-color: #2A2A2A;
+    padding-top: 20px;
+    margin-left: 65px;
+    border-radius: 12px;
+    width: 800px;
+}
+
+.week-table-list{
+    border-collapse: collapse;
+    background-color: #2A2A2A;
+    padding-top: 20px;
+    margin-left: 65px;
+    border-radius: 12px;
+    width: 540px;
+    text-align :center;
+}
+
+.search-table-list{
+    margin-top: 41px;
+    border-collapse: collapse;
+    background-color: #2A2A2A;
+    border-radius: 12px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    width: 820px;
+    height: 45px;
+    padding-top: 20px;
+    margin-left: 65px;
+    text-align: end;
+}
+
+#thArea{
+    height: 45px;
+    border-radius: 12px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+.week-thArea{
+    height: 45px;
+    border-radius: 12px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+.search-thArea{
+    height: 45px;
+    border-radius: 12px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+
+/* 검색바 결과 wrap */
+.board-search-wrap{
+    width: 925px;
+    height: 530px;
+    background: white;
+    background-color: #2A2A2A;
+    border-radius: 12px;
+    position: fixed;
+    top: 50%; /* 화면 중앙에 띄우기 위한 위치 조정 */
+    left: 50%; /* 화면 중앙에 띄우기 위한 위치 조정 */
+    transform: translate(-50%, -50%); /* 중앙 정렬을 위한 transform */
+    z-index: 9999; /* 다른 요소들보다 위로 나오게 함 */
+    overflow: auto;  /* 내용이 넘치면 스크롤을 표시 */
+}
+
+/* 검색 머릿말, 닫기 버튼 */
+.search-header-close{
+    display:flex;
+}
+.search-close-btn{
+    position: absolute;
+    left: 90%;
+    top: 3%;
+    width: 55px;
+    height: 50px;
+    border-radius: 12px;
+    cursor: pointer;
+    background-color: #2A2A2A;
+    border: none;
+}
+.search-close-span{
+    font-size: 25px;
+    color: rgb(255, 165, 0);
+}
+.search-close-span:hover {
+    color: red;
+}
+
+.close-btn-2{
+    background-color: rgb(255, 165, 0);
+    color: rgb(30, 30, 30);
+    width: 100px;
+    height: 50px;
+    font-family: Arial, sans-serif;
+    border-radius: 10px;
+    cursor: pointer;
+    margin: 17px 0px 10px 430px;
+}

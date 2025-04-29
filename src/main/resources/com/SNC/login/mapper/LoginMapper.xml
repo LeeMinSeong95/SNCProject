@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="mappers.LoginMapper">
+
+    <!-- 로그인 시 회원 정보 -->
+    <select id="findMemberId" parameterType="String" resultType="com.SNC.register.dto.MemberDto">
+        SELECT MBR_ID AS MBRId, MBR_NAME AS MBRName, MBR_PASS AS MBRPass, MBR_EMAIL AS MBREmail, MBR_IMG AS MBRImg, REG_DT AS REGDt, UPDATE_DT AS UPDATEDt
+        FROM members
+        WHERE MBR_NICKNAME = #{mbrNickname}
+    </select>
+
+</mapper>

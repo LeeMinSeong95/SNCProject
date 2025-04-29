@@ -1,0 +1,528 @@
+@charset "UTF-8";
+
+
+body {
+    background-color: #121212;
+    color: #E0E0E0;
+}
+
+.empty-bookmark-box {
+    background-color: #2a2a2a;
+    border: 1px dashed #555;
+    padding: 2rem;
+    text-align: center;
+    border-radius: 10px;
+    color: #999;
+    font-size: 1rem;
+    margin-bottom: 1rem;
+}
+.search-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 20px 0;
+}
+
+.search-box {
+    position: relative;
+    display: flex;
+    align-items: center;
+    background-color: #222;
+    border: 2px solid #666;
+    border-radius: 25px;
+    padding: 3px 5px;
+    width: 350px;
+}
+
+.search-box input {
+    flex-grow: 1;
+    border: none;
+    outline: none;
+    background: transparent;
+    color: #E0E0E0;
+    font-size: 16px;
+    padding: 8px;
+}
+
+.search-box .search-btn {
+    position: relative;
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 18px;
+    padding: 5px;
+    right: 10px;
+}
+
+.search-box .search-options {
+     border: none;
+     background-color: #444;
+     color: #E0E0E0;
+     font-size: 14px;
+     padding: 5px;
+     border-radius: 12px;
+     cursor: pointer;
+     outline: none;
+}
+
+.search-box .search-options:hover {
+    background-color: #555;
+}
+
+.nickname-container {
+    position: absolute;
+    top: 15px; /* 🔹 기존 20px → 10px로 조정 */
+    right: 100px; /* 로그아웃 버튼과의 간격 유지 */
+    font-size: 14px; /* 🔹 텍스트 크기 조정 */
+    font-weight: bold;
+    color: #E0E0E0;
+    background-color: rgba(255, 255, 255, 0.1); /* 반투명 배경 */
+    padding: 6px 12px; /* 🔹 패딩 줄여서 높이 최소화 */
+    border-radius: 6px; /* 🔹 둥글기 조정 */
+    display: flex;
+    align-items: center;
+    height: auto; /* 🔹 높이 자동 조정 */
+    line-height: 1.2; /* 🔹 텍스트 높이와 맞춤 */
+}
+
+/* ✅ 로그아웃 컨테이너 (배경색 X) */
+.logout-container {
+    position: absolute;
+    top: 50px;
+    right: 20px;
+    display: flex;
+    align-items: center;
+}
+
+/* ✅ 로그아웃 버튼 */
+.logout-form {
+    margin: 0;
+    padding: 0;
+}
+
+.logout-btn {
+    display: flex;
+    align-items: center;
+    background: none;
+    border: none;
+    color: #FFB347; /* 🔥 주황색 텍스트 */
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: bold;
+    transition: all 0.3s ease-in-out;
+}
+
+.logout-btn:hover {
+    color: #FFA500; /* 🔥 호버 시 더 밝은 주황색 */
+}
+
+.bookmark-main-container {
+    margin-top: 95px;
+    margin-left: 200px;
+    max-width: 1600px;
+}
+
+.bookmark-title {
+    font-size: 20px;
+    color: #f5f5f5;
+    margin-bottom: 16px;
+}
+
+.bookmark-card {
+    display: flex;
+    flex: none;
+    background-color: rgba(220, 220, 220, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 8px;
+    width: 200px;
+    box-shadow: 0 2px 6px rgba(255, 255, 255, 0.3);
+    color: #f0f0f0;
+    overflow: hidden;
+    transition: background-color 0.3s ease;
+    margin-right: 20px;
+    margin-bottom: 14px;
+    height: 160px;
+}
+
+
+
+/*.bookmark-card:hover {
+    transform: translateY(-5px);
+    background-color: rgba(255, 255, 255, 0.25);
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+}*/
+.card-title {
+    font-size: 16px;
+    font-weight: bold;
+    margin-bottom: 8px;
+}
+
+.card-body p {
+    margin: 4px 0;
+    font-size: 14px;
+}
+
+.bookmark-section {
+    max-width: 900px;
+    color: #ddd;
+    height: 300px;
+}
+
+.bookmark-section h3 {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+    color: #FFD700;
+}
+
+.card-wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+}
+
+/* 세로 카테고리 컬러 바 */
+.category-bar {
+    width: 6px;
+    height: 100%;
+    flex-shrink: 0;
+}
+
+/* 각각의 카테고리 색상 구분 */
+.bookmark-card.kr .category-bar {
+    background-color: #e74c3c; /* 빨간색 */
+}
+
+.bookmark-card.us .category-bar {
+    background-color: #2ecc71; /* 초록색 */
+}
+
+.bookmark-card.coin .category-bar {
+    background-color: #9b59b6; /* 보라색 */
+}
+
+.card-content {
+    padding: 16px;
+    flex: 1; /* 남은 공간 다 차지 */
+}
+
+
+.bookmark-flex-container {
+    display: flex;
+    align-items: flex-start;
+    gap: 40px;
+}
+
+.bookmark-section-container {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+    flex: 1;
+}
+
+/* 😎 여기는 Rank 부분 CSS 입니다 😎*/
+/* 왼쪽 패널: 카드 묶음 */
+.left-panel {
+    flex: 1; /* 또는 원하는 너비로: width: 60%; */
+}
+
+/* 오른쪽 패널: 테이블들 */
+.right-panel {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 40px; /* 테이블 간 간격 */
+}
+
+.highlight-stock {
+    font-size: 1.5rem;
+    color: #FFD700; /* 금색 */
+    font-weight: bold;
+}
+
+.top5-container {
+    background-color: #1c1c1c;
+    padding: 20px;
+    color: #fff;
+    width: 750px;
+    border-radius: 8px;
+    box-shadow: 0 2px 6px rgba(255, 255, 255, 0.3);
+}
+.top5-tabs {
+    display: flex;
+    margin-bottom: 10px;
+}
+.top5-tab {
+    flex: 1;
+    padding: 10px;
+    background-color: #2a2a2a;
+    color: #fff;
+    text-align: center;
+    cursor: pointer;
+}
+.top5-tab.active {
+    background-color: #444;
+    font-weight: bold;
+}
+.top5-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+}
+.top5-table th, .top5-table td {
+    padding: 8px;
+    border-bottom: 1px solid #333;
+}
+
+#top5-updated { font-size: 13px; color: #aaa; margin-bottom: 8px; }
+#top5-updated-usa , #top5-updated-coin{
+    font-size: 13px;
+    color: #aaa;
+}
+
+
+.top5-table th {
+    text-align: left;  /* 왼쪽 정렬 */
+    padding-left: 10px;
+}
+
+/* ===== 🖱️ 행 hover 효과 추가 ===== */
+.top5-table tbody tr:hover {
+    background-color: #2c2c2c;
+    transition: background-color 0.2s ease-in-out;
+    cursor: pointer;
+}
+
+/* 배경 및 텍스트 색상 설정 */
+.rate-cell {
+    font-weight: bold;
+    padding: 4px 8px;
+    text-align: center;
+    border-radius: 6px;
+    display: inline-block;
+    width: 60px;
+}
+
+.rate-cell.positive {
+    background-color: #4c0000 ;
+    color: #ff4c4c ;
+}
+
+.rate-cell.negative {
+    background-color: #001a4c ;
+    color: #4c6fff ;
+}
+
+.bookmark-container{
+    display: flex;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    gap: 10px;
+}
+
+/* --------------------------- 이대리가 추가한 알림 관련 css ---------------------------- */
+
+/* ⋮ span */
+.setting-span{
+    cursor : pointer;
+    float : right;
+    position : relative;
+}
+
+/* ⋮ 누르면 나오는 설정 세팅 팝업  */
+.alert-setting-wrap{
+    position: absolute;
+    width: 162px;
+    height: 90px;
+    background-color: rgba(220, 220, 220, 0.2);
+    left: -3000%;
+    display: grid;
+    text-align: center;
+    border-radius: 12px;
+}
+
+/* 설정 팝업의 버튼들 (알림 설정, 취소) */
+.alert-setting-wrap > button {
+    cursor : pointer;
+    border-radius: 12px;
+    background-color : #FFD700;
+}
+
+.alert-setting-wrap > button:hover {
+    background-color : red;
+}
+
+/* 알림 상세 설정 팝업 */
+.alert-popup-wrap {
+    width: 925px;
+    height: 530px;
+    background: white;
+    background-color: #2A2A2A;
+    border-radius: 12px;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 9999;
+    overflow: auto;
+}
+
+/* 알림 상세 설정 팝업 헤더 영역 */
+.alert-popup-header{
+    display:flex;
+    margin-bottom: 40px;
+}
+
+/* 알림 상세 설정 팝업 머릿말 */
+.alert-header-h1 {
+    font-size: 24px;
+    color: #FFA500;
+    margin: 25px 0px 10px 65px;
+}
+
+/* 알림 상세 설정  팝업 X 버튼 */
+.alert-popup-cancel{
+    cursor : pointer;
+    font-size: 25px;
+    color: rgb(255, 165, 0);
+    position: absolute;
+    left: 90%;
+    top: 3%;
+}
+
+/* 알림 상세 설정  팝업 X 버튼 hover */
+.alert-popup-cancel:hover {
+    color: red;
+}
+
+/* 알림 상세 설정 팝업 콘텐츠 영역 */
+.alert-popup-contents {
+    width: 790px;
+    height: 335px;
+    margin: 20px 0px 20px 65px;
+    border-radius: 12px;
+    border: 1px solid black;
+    overflow: auto;
+}
+
+/* 상세 팝업 on/off 토글 영역 */
+.alert-on-off-wrap{
+    margin: 20px 0px 20px 30px;
+    width: 160px;
+    height: 60px;
+    border: 1px solid black;
+    border-radius: 12px;
+    text-align: center;
+}
+
+/* on/off 각 버튼 */
+.alert-on-off-wrap > button {
+    width: 50px;
+    height: 35px;
+    margin: 10px 10px 0px 12px;
+    cursor: pointer;
+    border-radius : 12px;
+    background-color : #ccd1d1;
+}
+
+
+.alert-on {
+    background-color: #ccd1d1; /* 기본 배경색 */
+}
+.alert-on:hover {
+    background-color : #33f0ff;
+}
+
+.alert-off:hover {
+    background-color : #ff3352;
+}
+.alert-on.active {
+    background-color: #33f0ff;
+}
+.alert-off.active {
+    background-color: #ff3352;
+}
+
+/* 변경하기 버튼 */
+.alert-update {
+    position: relative;
+    left: 75%;
+    top: -30%;
+    width: 83px;
+    height: 50px;
+    margin: 10px 10px 0px 12px;
+    cursor: pointer;
+    border-radius: 12px;
+    background-color: #ccd1d1;
+}
+.alert-update:hover {
+    background-color : #FFA500;
+}
+.alert-update.active {
+    background-color: #FFA500;
+}
+
+/* 알림 상세 설정 팝업 퍼센트 설정 감싸는 영역 */
+.alert-percent-wrap{
+    margin: -65px 0px 20px 30px;
+}
+
+.alert-percent-header{
+    margin: 20px 0px 20px 5px;
+    color :#FFA500;
+    display: grid;
+}
+
+/* 알림 상세 설정 팝업 퍼센트 input */
+.alert-percent-input {
+    width: 200px;
+    height: 50px;
+    border-radius: 12px;
+}
+
+/* 알림 목표치 주의 span */
+.alert-percent-warning{
+    margin-top : 10px;
+    color : #ff335e;
+    display : grid;
+}
+
+/* 알림 타입 영역 */
+.alert-type-wrap {
+    margin: 20px 0px 20px 30px;
+}
+
+.alert-type-header{
+    margin: 20px 0px 20px 5px;
+    color :#FFA500;
+    display: grid;
+}
+
+/* 알림 타입 설정 주의 span */
+.alert-type-warning{
+    margin-top : 10px;
+    color : #ff335e;
+    display : grid;
+}
+
+/* 설정 완료 또는 취소 영역 */
+.alert-popup-btnWrap{
+    text-align: center;
+}
+
+/* 안의 버튼들 */
+.alert-popup-btnWrap > button {
+    background-color : #FFA500;
+    border-radius : 12px;
+    cursor:pointer;
+    width: 100px;
+    height: 50px;
+}
+
+/* 설정 버튼 */
+.alert-popup-check{
+    margin-right: 20px;
+}
+
+/* ------ 알람 css 여기까지 ----- */
+
+

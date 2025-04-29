@@ -1,0 +1,189 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.SNC.board.mapper.BoardMapper">
+
+    <!-- 이주의 글 게시판 리스트 -->
+    <select id="getWeekBoardList" resultType="com.SNC.board.dto.BoardDto">
+        SELECT
+        b.BRD_ID AS brdId,
+        m.MBR_CD AS mbrCd,
+        m.MBR_NICKNAME AS mbrNickname,
+        DECODE(b.BRD_TYPE, '0', '국내', '1', '해외', '2', '코인', '3', '익명', '4', 'QnA') AS brdType,
+        b.BRD_TITLE AS brdTitle,
+        b.BRD_CONTENT AS brdContent,
+        TO_CHAR(b.BRD_DT, 'YYYY-MM-DD') AS brdDt,
+        TO_CHAR(b.BRD_UPDT, 'YYYY-MM-DD') AS brdUpdt,
+        COUNT(c.CMT_ID) AS cmtCnt,
+        l.LIKE_COUNT AS likeCnt
+        FROM board b
+        INNER JOIN MEMBER m ON b.MBR_CD = m.MBR_CD
+        LEFT JOIN comments c ON b.BRD_ID = c.BRD_ID
+        INNER JOIN (
+        SELECT BRD_ID, COUNT(*) AS LIKE_COUNT
+        FROM likes
+        GROUP BY BRD_ID
+        ) l ON b.BRD_ID = l.BRD_ID
+        GROUP BY
+        b.BRD_ID, m.MBR_CD, m.MBR_NICKNAME, b.BRD_TYPE, b.BRD_TITLE,
+        b.BRD_CONTENT, b.BRD_DT, b.BRD_UPDT, l.LIKE_COUNT
+        ORDER BY likeCnt DESC
+        FETCH FIRST 5 ROWS ONLY
+    </select>
+
+    <!--국내 해외(주식) 게시판 리스트-->
+    <select id="selectStockList" resultType="com.SNC.board.dto.BoardDto">
+        SELECT
+        b.BRD_ID AS brdId,
+        m.MBR_CD AS mbrCd,
+        m.MBR_NICKNAME AS mbrNickname,
+        DECODE(b.BRD_TYPE, '0', '국내', '1', '해외') AS brdType,
+        b.BRD_TITLE AS brdTitle,
+        b.BRD_CONTENT AS brdContent,
+        TO_CHAR(b.BRD_DT, 'YYYY-MM-DD') AS brdDt,
+        TO_CHAR(b.BRD_UPDT, 'YYYY-MM-DD') AS brdUpdt,
+        COUNT(c.CMT_ID) AS cmtCnt
+        FROM
+        board b
+        INNER JOIN
+        MEMBER m ON b.MBR_CD = m.MBR_CD
+        LEFT JOIN
+        comments c ON b.BRD_ID = c.BRD_ID
+        WHERE
+        b.BRD_TYPE IN ('0', '1')
+        GROUP BY
+        b.BRD_ID, m.MBR_CD, m.MBR_NICKNAME, b.BRD_TYPE, b.BRD_TITLE,
+        b.BRD_CONTENT, b.BRD_DT, b.BRD_UPDT
+        ORDER BY
+        b.BRD_ID DESC
+    </select>
+
+    <!-- 코인 게시판 리스트 -->
+    <select id="selectCoinList" resultType="com.SNC.board.dto.BoardDto">
+        SELECT
+        b.BRD_ID AS brdId,
+        m.MBR_CD AS mbrCd,
+        m.MBR_NICKNAME AS mbrNickname,
+        DECODE(b.BRD_TYPE, '2', '코인') AS brdType,
+        b.BRD_TITLE AS brdTitle,
+        b.BRD_CONTENT AS brdContent,
+        TO_CHAR(b.BRD_DT, 'YYYY-MM-DD') AS brdDt,
+        TO_CHAR(b.BRD_UPDT, 'YYYY-MM-DD') AS brdUpdt,
+        COUNT(c.CMT_ID) AS cmtCnt
+        FROM
+        board b
+        INNER JOIN
+        MEMBER m ON b.MBR_CD = m.MBR_CD
+        LEFT JOIN
+        comments c ON b.BRD_ID = c.BRD_ID
+        WHERE
+        b.BRD_TYPE = '2'
+        GROUP BY
+        b.BRD_ID, m.MBR_CD, m.MBR_NICKNAME, b.BRD_TYPE, b.BRD_TITLE,
+        b.BRD_CONTENT, b.BRD_DT, b.BRD_UPDT
+        ORDER BY
+        b.BRD_ID DESC
+    </select>
+
+    <!-- 익명, QnA 게시판 리스트 -->
+    <select id="selectAnonymList" resultType="com.SNC.board.dto.BoardDto">
+        SELECT
+        b.BRD_ID AS brdId,
+        m.MBR_CD AS mbrCd,
+        m.MBR_NICKNAME AS mbrNickname,
+        DECODE(b.BRD_TYPE, '3', '익명', '4', 'QnA') AS brdType,
+        b.BRD_TITLE AS brdTitle,
+        b.BRD_CONTENT AS brdContent,
+        TO_CHAR(b.BRD_DT, 'YYYY-MM-DD') AS brdDt,
+        TO_CHAR(b.BRD_UPDT, 'YYYY-MM-DD') AS brdUpdt,
+        COUNT(c.CMT_ID) AS cmtCnt
+        FROM
+        board b
+        INNER JOIN
+        MEMBER m ON b.MBR_CD = m.MBR_CD
+        LEFT JOIN
+        comments c ON b.BRD_ID = c.BRD_ID
+        WHERE
+        b.BRD_TYPE IN ('3', '4')
+        GROUP BY
+        b.BRD_ID, m.MBR_CD, m.MBR_NICKNAME, b.BRD_TYPE, b.BRD_TITLE,
+        b.BRD_CONTENT, b.BRD_DT, b.BRD_UPDT
+        ORDER BY
+        b.BRD_ID DESC
+    </select>
+
+
+    <!-- 게시판 글쓰기 : insert 같은 쿼리 반환은 자동적으로 반환 resultType 필요없음 -->
+    <insert id="boardInsert">
+        INSERT INTO board (BRD_ID, MBR_CD, BRD_TYPE, BRD_TITLE, BRD_CONTENT, BRD_DT, BRD_UPDT)
+        VALUES (SNC.board_seq.NEXTVAL, #{id}, #{type}, #{title}, #{content}, SYSDATE, NULL)
+    </insert>
+
+    <!-- id 해당 게시글 가져오기 -->
+    <select id="getBoardById" parameterType="String" resultType="com.SNC.board.dto.BoardDto">
+        SELECT b.BRD_ID AS brdId,
+        m.MBR_CD AS mbrCd,
+        m.MBR_NICKNAME AS mbrNickname,
+        b.BRD_TYPE AS BrdType,
+        b.BRD_TITLE AS brdTitle,
+        b.BRD_CONTENT AS brdContent,
+        TO_CHAR(b.BRD_DT, 'YYYY-MM-DD') AS brdDt,
+        TO_CHAR(b.BRD_UPDT, 'YYYY-MM-DD') AS brdUpdt
+        FROM board b INNER JOIN member m
+        ON b.MBR_CD = m.MBR_CD
+        AND BRD_ID = #{id}
+    </select>
+
+    <!-- 게시글 수정하기 -->
+    <update id="boardUpdate">
+        UPDATE board
+        <set>
+            <if test="title != null">
+                BRD_TITLE = #{title},
+            </if>
+            <if test="content != null">
+                BRD_CONTENT = #{content},
+            </if>
+            BRD_UPDT = SYSDATE
+        </set>
+        WHERE BRD_ID = #{brdId}
+    </update>
+
+    <!-- 게시글 삭제 -->
+    <delete id="deleteBoard" parameterType="String">
+        DELETE FROM board WHERE BRD_ID = #{id}
+    </delete>
+
+    <!-- 게시글 검색 리스트 -->
+    <select id="searchBoard" parameterType="map" resultType="com.SNC.board.dto.BoardDto">
+        SELECT
+        b.BRD_ID AS brdId,
+        m.MBR_CD AS mbrCd,
+        m.MBR_NICKNAME AS mbrNickname,
+        DECODE(b.BRD_TYPE, '0', '국내', '1', '해외', '2', '코인', '3', '익명', '4', 'QnA') AS brdType,
+        b.BRD_TITLE AS brdTitle,
+        b.BRD_CONTENT AS brdContent,
+        TO_CHAR(b.BRD_DT, 'YYYY-MM-DD') AS brdDt,
+        TO_CHAR(b.BRD_UPDT, 'YYYY-MM-DD') AS brdUpdt,
+        COUNT(c.CMT_ID) AS cmtCnt
+        FROM board b
+        INNER JOIN MEMBER m ON b.MBR_CD = m.MBR_CD
+        LEFT JOIN comments c ON b.BRD_ID = c.BRD_ID
+
+        <where>
+            b.BRD_TYPE = #{mainType}
+            <if test='subType == "0" and value != null'>AND m.MBR_NICKNAME LIKE '%' || #{value} || '%'</if>
+            <if test='subType == "1" and value != null'>AND b.BRD_TITLE LIKE '%' || #{value} || '%'</if>
+            <if test='subType == "2" and value != null'>AND b.BRD_CONTENT LIKE '%' || #{value} || '%'</if>
+            <if test='subType == "3" and value != null'>AND b.BRD_ID = #{value}</if>
+            <if test='subType == "4" and start != null and end != null'>
+                AND TRUNC(NVL(b.BRD_UPDT, b.BRD_DT))
+                BETWEEN TO_DATE(#{start}, 'YYYY-MM-DD')
+                AND TO_DATE(#{end}, 'YYYY-MM-DD')
+            </if>
+        </where>
+
+        GROUP BY b.BRD_ID, m.MBR_CD, m.MBR_NICKNAME, b.BRD_TYPE, b.BRD_TITLE, b.BRD_CONTENT, b.BRD_DT, b.BRD_UPDT
+        ORDER BY b.BRD_ID DESC
+    </select>
+
+</mapper>

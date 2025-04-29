@@ -1,0 +1,138 @@
+/* 초기화 */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* 전역 스타일 */
+body {
+    background-color: #121212;
+    font-family: Arial, sans-serif;
+    color: #333;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+/* 헤더 스타일 */
+header {
+    background-color: #333;
+    color: #fff;
+    padding: 20px;
+}
+header h1 {
+    font-size: 24px;
+    margin: 0;
+}
+
+/* 메인 컨텐츠(좌우 레이아웃) */
+.main-content {
+    flex: 1;
+    display: flex; /* 좌우로 배치하기 위해 flex 사용 */
+    padding: 20px;
+}
+
+/* 왼쪽 사이드바 */
+.sidebar {
+    width: 310px; /* 사이드바 너비 조절 */
+    background-color: #eee;
+    padding: 20px;
+    border-radius: 8px;
+}
+
+/* 검색 영역 */
+.search-bar {
+    display: flex;
+    margin-bottom: 20px;
+}
+.search-bar input {
+    flex: 1;
+    padding: 8px;
+    margin-right: 8px;
+}
+.search-bar button {
+    padding: 8px 16px;
+    cursor: pointer;
+}
+
+/* 코인 목록 */
+.coin-list {
+    list-style: none;
+    margin-bottom: 20px;
+}
+.coin-list li {
+    margin-bottom: 10px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+/* 테이블 스타일 */
+.coin-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+.coin-table th, .coin-table td {
+    border: 1px solid #ccc;
+    padding: 8px;
+    text-align: center;
+}
+.coin-table th {
+    background-color: #ddd;
+}
+
+/* 오른쪽 차트 영역 */
+.chart-section {
+    flex: 1; /* 남은 공간을 차트 영역에 할당 */
+    background-color: #fff;
+    margin-left: 20px;
+    padding: 20px;
+    border-radius: 8px;
+}
+
+/* 차트 크기 */
+.chart-section canvas {
+    width: 100%;
+    height: 400px; /* 필요시 조절 */
+}
+
+/* 푸터 */
+footer {
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    padding: 10px;
+}
+
+a{
+    text-decoration: none;
+    color: black;
+}
+
+.type-btn {
+    /* 인라인 요소를 블록처럼 다루되, 본문 흐름에 맞춰 줄바꿈됨 */
+    display: inline-block;
+
+    /* 글씨 크기, 폰트 계열은 상황에 맞춰 조절 */
+    font-size: 14px;
+    font-family: inherit;
+    color: #fff;                /* 버튼 텍스트 색 */
+    text-decoration: none;      /* 링크 밑줄 제거 */
+
+    /* 버튼 모양 (둥근 테두리, 테두리 색, 배경색) */
+    border: 1px solid #666;     /* 테두리 색상 */
+    border-radius: 9999px;      /* 완전히 둥글게 만들기 */
+    background-color: #2a2a2a;  /* 배경색 (원하는 대로 변경 가능) */
+
+    /* 여백 (버튼 안쪽 패딩) */
+    padding: 0.5rem 1rem;       /* 글씨 크기에 맞춰 조절 */
+
+    /* 수직 정렬이나 기타 속성은 필요에 따라 추가 */
+    vertical-align: middle;
+}
+
+/* 호버 시 색상 변화를 주고 싶다면 */
+.type-btn:hover {
+    background-color: #444;     /* 호버 시 좀 더 어둡게 */
+    border-color: #555;         /* 테두리 색도 함께 변경 */
+}

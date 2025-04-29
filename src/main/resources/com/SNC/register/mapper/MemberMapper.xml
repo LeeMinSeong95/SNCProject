@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.SNC.register.mapper.MemberMapper">
+
+    <!-- 회원 가입 -->
+    <insert id="memberInsert" parameterType="com.SNC.register.dto.MemberDto">
+        INSERT INTO member (
+        MBR_CD,MBR_ID, MBR_NAME, MBR_NICKNAME,MBR_PASS, MBR_EMAIL, MBR_IMG, REG_DT, UPDATE_DT, KAKAO_ACCESS_TOKEN, KAKAO_REFRESH_TOKEN, KAKAO_TOKEN_EXPIRES
+        )
+        VALUES (
+        SNC.member_seq.NEXTVAL,
+        #{mbrId},
+        #{mbrName},
+        #{mbrNickName},
+        #{mbrPass},
+        #{mbrEmail},
+        #{mbrImg},
+        SYSDATE,
+        SYSDATE,
+        NULL,
+        NULL,
+        NULL
+        )
+    </insert>
+
+    <select id="getByUserId" parameterType="String" resultType="com.SNC.register.dto.MemberDto">
+        SELECT
+        MBR_CD as mbrCd,
+        MBR_ID as mbrId,
+        MBR_NAME as mbrName,
+        MBR_NICKNAME as mbrNickName,
+        MBR_PASS as mbrPass,
+        MBR_EMAIL as mbrEmail,
+        MBR_IMG as mbrImg,
+        REG_DT as regDt,
+        UPDATE_DT as updateDt
+        FROM member
+        WHERE MBR_ID = #{memberId}
+    </select>
+
+    <select id="findByEmail" parameterType="String" resultType="java.lang.String">
+        SELECT MBR_EMAIL FROM member WHERE MBR_EMAIL = #{email}
+    </select>
+
+    <select id="findById" parameterType="String" resultType="java.lang.String">
+        SELECT MBR_ID FROM member WHERE MBR_ID = #{memberId}
+    </select>
+
+    <select id="findByNickName" parameterType="String" resultType="java.lang.String">
+        SELECT MBR_NICKNAME FROM member WHERE MBR_NICKNAME = #{mbrNickName}
+    </select>
+
+
+    <!-- 알림 (회원 이메일 정보 조회) - EmailSendService -->
+    <select id="findEmailByMember" parameterType="String" resultType="String">
+        SELECT MBR_EMAIL
+        FROM member
+        WHERE MBR_CD = #{mbrCd}
+    </select>
+    <!-- 알림 (회원 닉네임 정보 조회) - AlertCheckService -->
+    <select id="findNicknameByMbrCd" parameterType="String" resultType="String">
+        SELECT MBR_NICKNAME
+        FROM member
+        WHERE MBR_CD = #{mbrCd}
+    </select>
+    <!-- 알림 (회원 토큰 정보 조회) - KakaoSendService -->
+    <select id="findAccessTokenByMbrCd" parameterType="String" resultType="String">
+        SELECT KAKAO_ACCESS_TOKEN AS accessToken
+        FROM member
+        WHERE MBR_CD = #{mbrCd}
+    </select>
+    <!-- 알림 (카카오 엑세스 토큰, 리프레쉬 토큰) -->
+    <update id="updateKakaoToken" parameterType="com.SNC.kakao.dto.KakaoDto">
+        UPDATE member
+        SET
+        KAKAO_ACCESS_TOKEN = #{accessToken},
+        KAKAO_REFRESH_TOKEN = #{refreshToken},
+        KAKAO_TOKEN_EXPIRES = #{tokenExpires}
+        WHERE MBR_CD = #{mbrCd}
+    </update>
+
+</mapper>

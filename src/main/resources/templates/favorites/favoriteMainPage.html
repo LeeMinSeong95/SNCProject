@@ -1,0 +1,609 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="_csrf" th:content="${_csrf.token}"/>
+    <meta name="_csrf_header" th:content="${_csrf.headerName}"/>
+    <title>즐겨찾기</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" th:href="@{/css/favorite/favorite.css}">
+    <link rel="stylesheet" th:href="@{/css/navigation/sideBar.css}">
+</head>
+<body>
+<div th:replace="~{navigation/navbar :: navbar}"></div>
+
+<div th:if="${nickname}" class="nickname-container">
+    <p><span th:text="${nickname}"></span>님 환영합니다!</p>
+</div>
+
+<div th:if="${nickname}" class="logout-container">
+    <form th:action="@{/logout}" method="post" class="logout-form">
+        <button type="submit" class="logout-btn">
+            <span>로그아웃</span>
+        </button>
+    </form>
+</div>
+
+<div th:replace="~{search/searchbar :: searchbar}"></div>
+
+<div class="bookmark-main-container">
+    <div class="bookmark-flex-container">
+
+        <!-- 카드들을 묶는 영역 -->
+        <div class="bookmark-section-container">
+            <div class="left-panel">
+                <!-- 한국 주식 -->
+                <div class="bookmark-section">
+                    <h3>한국 주식</h3>
+                    <div class="card-wrapper">
+
+                        <!--   데이터 미존재시 표출되는 div     -->
+                        <div th:unless="${krList != null and !#lists.isEmpty(krList)}">
+                            <p>즐겨찾기에 등록된 종목이 없습니다.</p>
+                        </div>
+
+                        <div class="bookmark-container" th:if="${krList != null and !#lists.isEmpty(krList)}">
+                            <div class="bookmark-card kr" th:each="kr : ${krList}">
+                                <div class="category-bar" ></div>
+                                <div class="card-content" data-chart-type="kr">
+                                    <div class="card-title">
+                                        <span th:text="${kr.name}"></span>
+                                        <!-- 이대리 추가 사항 -->
+                                        <input class="alert-item-id" type="hidden" th:value="${kr.itemId}">
+                                        <input class="alert-item-type" type="hidden" th:value="${kr.itemType}">
+                                        <input class="alert-mark-id" type="hidden" th:value="${kr.markId}">
+                                        <span class="setting-span">⋮
+
+                                            <!-- ⋮ 클릭시 나올 알림 세팅 팝업 -->
+                                            <div class="alert-setting-wrap" style="display:none;">
+                                                <button class="alert-on-off">알림 설정</button>
+                                                <button class="alert-cancel">취소</button>
+                                            </div>
+
+                                            <!-- 알람 상세 세팅 팝업 -->
+                                            <div class="alert-popup-wrap" style="display:none;">
+                                                <input class="alert-id" type="hidden" th:value="${kr.alert != null ? kr.alert.alertId : ''}">
+                                                    <!-- 팝업 헤더 -->
+                                                        <div class="alert-popup-header">
+                                                            <h1 class="alert-header-h1">알림 설정</h1>
+                                                            <span class="alert-popup-cancel">X</span>
+                                                        </div>
+                                                        <!-- 팝업 컨텐츠 -->
+                                                        <div class="alert-popup-contents">
+                                                            <input type="hidden" class="alert-status" th:value="${kr.alert != null ? kr.alert.alertStatus : '0'}">
+
+                                                            <!-- on/off 버튼 -->
+                                                            <span style="display:grid; margin: 20px 0px 20px 70px; color:#FFA500;">ON / OFF 설정</span>
+                                                            <input type="hidden" class="alert-status">
+                                                            <div class="alert-on-off-wrap">
+                                                                <button class="alert-on" type="button" th:classappend="${kr.alert != null and kr.alert.alertStatus == '1'} ? ' active' : ''">
+                                                                    ON
+                                                                </button>
+                                                                <button class="alert-off" type="button">
+                                                                    OFF
+                                                                </button>
+                                                            </div>
+                                                            <button class="alert-update" type="button">
+                                                                변경하기
+                                                            </button>
+                                                            <!-- 목표치 설정 영역 -->
+                                                            <div class="alert-percent-wrap" th:style="${kr.alert != null and kr.alert.alertStatus == '1' ? 'display: block;' : 'display:none;'}">
+                                                                <span class="alert-percent-header">📈📉알림 시세 설정(상승 혹은 하락)</span>
+                                                                <input type="text" class="alert-percent-input"
+                                                                       th:value="${kr.alert != null ? kr.alert.alertPercent : ''}"
+                                                                       placeholder="목표치를 입력해주세요."/>
+                                                                <span>%(퍼센트) 설정</span>
+                                                                <span class="alert-percent-warning">※ 최소 -30% ~ 최대 30% 까지 설정할 수 있습니다. (0%는 설정할 수 없습니다.)</span>
+                                                            </div>
+                                                            <!-- 알림 타입 영역 -->
+                                                            <div class="alert-type-wrap" th:style="${kr.alert != null and kr.alert.alertStatus == '1' ? 'display: block;' : 'display:none;'}">
+                                                                <span class="alert-type-header">📢알림 방식 선택</span>
+                                                                <label>
+                                                                    <input type="radio" name="alert_kr" value="KAKAO" th:checked="${kr.alert != null and kr.alert.alertType == 'KAKAO'}">
+                                                                    <img th:src="@{/images/kakaotalk.png}" alt="카카오톡 아이콘"
+                                                                        style="width:16px; height:16px; vertical-align:middle; margin-right:4px;">
+                                                                    카카오
+                                                                </label>
+                                                                <label>
+                                                                    <input type="radio" name="alert_kr" value="EMAIL" th:checked="${kr.alert != null and kr.alert.alertType == 'EMAIL'}">
+                                                                    <img th:src="@{/images/email_logo.png}" alt="이메일 아이콘"
+                                                                    style="width:16px; height:16px; vertical-align:middle; margin-right:4px;">
+                                                                    이메일
+                                                                </label>
+                                                                <br/>
+                                                                <span>※ 카카오톡으로 알림을 받기 위해서는 카카오톡 연동을 하셔야 합니다.
+                                                                    <br/>
+                                                                    <a href="/kakao/login">카카오톡 연동하러가기</a>
+                                                                </span>
+                                                                <span class="alert-type-warning">※ 알림 방식은 하나만 선택할 수 있습니다.</span>
+                                                            </div>
+                                                        </div>
+                                                        <!-- 알림 팝업 설정 및 닫기 -->
+                                                        <div class="alert-popup-btnWrap">
+                                                            <button class="alert-popup-check">설정</button>
+                                                            <button class="alert-popup-cancel2">닫기</button>
+                                                        </div>
+                                            </div> <!-- 알림 팝업 끝 -->
+                                        </span> <!-- ⋮ -->
+
+                                    </div>
+                                    <div class="card-body">
+                                        <p class="alert-curr-price" th:text="'📈 종가: ' + ${kr.nowprice} + '원'"></p>
+                                        <p th:text="'📉 변동: ' + ${kr.subprice} + '원'"></p>
+                                        <p th:text="'📊 변동률: ' + ${kr.subratio} + '%'"></p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 미국 주식 -->
+                <div class="bookmark-section">
+                    <h3>미국 주식</h3>
+                    <div class="card-wrapper">
+
+                        <!--   데이터 미존재시 표출되는 div     -->
+                        <div th:unless="${usList != null and !#lists.isEmpty(usList)}">
+                            <p>즐겨찾기에 등록된 종목이 없습니다.</p>
+                        </div>
+
+                        <div th:if="${usList != null and !#lists.isEmpty(usList)}" style="display:flex;">
+                            <div class="bookmark-card us" th:each="us : ${usList}">
+                                <div class="category-bar"></div>
+                                <div class="card-content" data-chart-type="us">
+                                    <div class="card-title">
+                                        <span th:text="${us.name}"></span>
+                                        <!-- 이대리 추가 사항 -->
+                                        <input class="alert-item-id" type="hidden" th:value="${us.itemId}">
+                                        <input class="alert-item-type" type="hidden" th:value="${us.itemType}">
+                                        <input class="alert-mark-id" type="hidden" th:value="${us.markId}">
+                                        <span class="setting-span">⋮
+
+                                            <!-- ⋮ 클릭시 나올 알림 세팅 팝업 -->
+                                            <div class="alert-setting-wrap" style="display:none;">
+                                                <button class="alert-on-off">알림 설정</button>
+                                                <button class="alert-cancel">취소</button>
+                                            </div>
+
+                                            <!-- 알람 상세 세팅 팝업 -->
+                                            <div class="alert-popup-wrap" style="display:none;">
+                                                <input class="alert-id" type="hidden" th:value="${us.alert != null ? us.alert.alertId : ''}">
+                                                <!-- 팝업 헤더 -->
+                                                        <div class="alert-popup-header">
+                                                            <h1 class="alert-header-h1">알림 설정</h1>
+                                                            <span class="alert-popup-cancel">X</span>
+                                                        </div>
+                                                <!-- 팝업 컨텐츠 -->
+                                                        <div class="alert-popup-contents">
+                                                            <input type="hidden" class="alert-status" th:value="${us.alert != null ? us.alert.alertStatus : '0'}">
+
+                                                            <!-- on/off 버튼 -->
+                                                            <span style="display:grid; margin: 20px 0px 20px 70px; color:#FFA500;">ON / OFF 설정</span>
+                                                            <input type="hidden" class="alert-status">
+                                                            <div class="alert-on-off-wrap">
+                                                                <button class="alert-on" type="button" th:classappend="${us.alert != null and us.alert.alertStatus == '1'} ? ' active' : ''">
+                                                                    ON
+                                                                </button>
+                                                                <button class="alert-off" type="button">
+                                                                    OFF
+                                                                </button>
+                                                            </div>
+                                                            <button class="alert-update" type="button">
+                                                                변경하기
+                                                            </button>
+                                                            <!-- 목표치 설정 영역 -->
+                                                            <div class="alert-percent-wrap" th:style="${us.alert != null and us.alert.alertStatus == '1' ? 'display: block;' : 'display:none;'}">
+                                                                <span class="alert-percent-header">📈📉알림 시세 설정(상승 혹은 하락)</span>
+                                                                <input type="text" class="alert-percent-input"
+                                                                       th:value="${us.alert != null ? us.alert.alertPercent : ''}"
+                                                                       placeholder="목표치를 입력해주세요."/>
+                                                                <span>%(퍼센트) 설정</span>
+                                                                <span class="alert-percent-warning">※ 최소 -30% ~ 최대 30% 까지 설정할 수 있습니다. (0%는 설정할 수 없습니다.)</span>
+                                                            </div>
+                                                            <!-- 알림 타입 영역 -->
+                                                            <div class="alert-type-wrap" th:style="${us.alert != null and us.alert.alertStatus == '1' ? 'display: block;' : 'display:none;'}">
+                                                                <span class="alert-type-header">📢알림 방식 선택</span>
+                                                                <label>
+                                                                    <input type="radio" name="alert_kr" value="KAKAO" th:checked="${us.alert != null and us.alert.alertType == 'KAKAO'}">
+                                                                    <img th:src="@{/images/kakaotalk.png}" alt="카카오톡 아이콘"
+                                                                         style="width:16px; height:16px; vertical-align:middle; margin-right:4px;">
+                                                                    카카오
+                                                                </label>
+                                                                <label>
+                                                                    <input type="radio" name="alert_kr" value="EMAIL" th:checked="${us.alert != null and us.alert.alertType == 'EMAIL'}">
+                                                                    <img th:src="@{/images/email_logo.png}" alt="이메일 아이콘"
+                                                                         style="width:16px; height:16px; vertical-align:middle; margin-right:4px;">
+                                                                    이메일
+                                                                </label>
+                                                                <br/>
+                                                                <span>※ 카카오톡으로 알림을 받기 위해서는 카카오톡 연동을 하셔야 합니다.
+                                                                    <br/>
+                                                                    <a href="/kakao/login">카카오톡 연동하러가기</a>
+                                                                </span>
+                                                                <span class="alert-type-warning">※ 알림 방식은 하나만 선택할 수 있습니다.</span>
+                                                            </div>
+                                                        </div>
+                                                <!-- 알림 팝업 설정 및 닫기 -->
+                                                        <div class="alert-popup-btnWrap">
+                                                            <button class="alert-popup-check">설정</button>
+                                                            <button class="alert-popup-cancel2">닫기</button>
+                                                        </div>
+                                            </div> <!-- 알림 팝업 끝 -->
+                                        </span> <!-- ⋮ -->
+
+                                    </div>
+                                    <div class="card-body">
+                                        <p class="alert-curr-price" th:text="'📈 종가: ' + ${us.nowprice} + '$'"></p>
+                                        <p th:text="'📉 변동: ' + ${us.subprice} + '$'"></p>
+                                        <p th:text="'📊 변동률: ' + ${us.subratio} + '%'"></p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 코인 -->
+                <div class="bookmark-section">
+                    <h3>코인</h3>
+                    <div class="card-wrapper">
+
+                        <!--   데이터 미존재시 표출되는 div     -->
+                        <div th:unless="${coinList != null and !#lists.isEmpty(coinList)}">
+                            <p>즐겨찾기에 등록된 종목이 없습니다.</p>
+                        </div>
+
+                        <div class="bookmark-card coin" th:each="coin : ${coinList}">
+                            <div class="category-bar"></div>
+                            <div class="card-content" data-chart-type="coin">
+                                <div class="card-title">
+                                    <span th:text="${coin.name}"></span>
+                                    <!-- 이대리 추가 사항 -->
+                                    <input class="alert-item-id" type="hidden" th:value="${coin.itemId}">
+                                    <input class="alert-item-type" type="hidden" th:value="${coin.itemType}">
+                                    <input class="alert-mark-id" type="hidden" th:value="${coin.markId}">
+                                    <span class="setting-span">⋮
+
+                                        <!-- ⋮ 클릭시 나올 알림 세팅 팝업 -->
+                                            <div class="alert-setting-wrap" style="display:none;">
+                                                <button class="alert-on-off">알림 설정</button>
+                                                <button class="alert-cancel">취소</button>
+                                            </div>
+
+                                        <!-- 알람 상세 세팅 팝업 -->
+                                            <div class="alert-popup-wrap" style="display:none;">
+                                                <input class="alert-id" type="hidden" th:value="${coin.alert != null ? coin.alert.alertId : ''}">
+                                                <!-- 팝업 헤더 -->
+                                                        <div class="alert-popup-header">
+                                                            <h1 class="alert-header-h1">알림 설정</h1>
+                                                            <span class="alert-popup-cancel">X</span>
+                                                        </div>
+                                                <!-- 팝업 컨텐츠 -->
+                                                        <div class="alert-popup-contents">
+                                                            <input type="hidden" class="alert-status" th:value="${coin.alert != null ? coin.alert.alertStatus : '0'}">
+
+                                                            <!-- on/off 버튼 -->
+                                                            <span style="display:grid; margin: 20px 0px 20px 70px; color:#FFA500;">ON / OFF 설정</span>
+                                                            <input type="hidden" class="alert-status">
+                                                            <div class="alert-on-off-wrap">
+                                                                <button class="alert-on" type="button" th:classappend="${coin.alert != null and coin.alert.alertStatus == '1'} ? ' active' : ''">
+                                                                    ON
+                                                                </button>
+                                                                <button class="alert-off" type="button">
+                                                                    OFF
+                                                                </button>
+                                                            </div>
+                                                            <button class="alert-update" type="button">
+                                                                변경하기
+                                                            </button>
+                                                            <!-- 목표치 설정 영역 -->
+                                                            <div class="alert-percent-wrap" th:style="${coin.alert != null and coin.alert.alertStatus == '1' ? 'display: block;' : 'display:none;'}">
+                                                                <span class="alert-percent-header">📈📉알림 시세 설정(상승 혹은 하락)</span>
+                                                                <input type="text" class="alert-percent-input"
+                                                                       th:value="${coin.alert != null ? coin.alert.alertPercent : ''}"
+                                                                       placeholder="목표치를 입력해주세요."/>
+                                                                <span>%(퍼센트) 설정</span>
+                                                                <span class="alert-percent-warning">※ 최소 -30% ~ 최대 30% 까지 설정할 수 있습니다. (0%는 설정할 수 없습니다.)</span>
+                                                            </div>
+                                                            <!-- 알림 타입 영역 -->
+                                                            <div class="alert-type-wrap" th:style="${coin.alert != null and coin.alert.alertStatus == '1' ? 'display: block;' : 'display:none;'}">
+                                                                <span class="alert-type-header">📢알림 방식 선택</span>
+                                                                <label>
+                                                                    <input type="radio" name="alert_kr" value="KAKAO" th:checked="${coin.alert != null and coin.alert.alertType == 'KAKAO'}">
+                                                                    <img th:src="@{/images/kakaotalk.png}" alt="카카오톡 아이콘"
+                                                                         style="width:16px; height:16px; vertical-align:middle; margin-right:4px;">
+                                                                    카카오
+                                                                </label>
+                                                                <label>
+                                                                    <input type="radio" name="alert_kr" value="EMAIL" th:checked="${coin.alert != null and coin.alert.alertType == 'EMAIL'}">
+                                                                    <img th:src="@{/images/email_logo.png}" alt="이메일 아이콘"
+                                                                         style="width:16px; height:16px; vertical-align:middle; margin-right:4px;">
+                                                                    이메일
+                                                                </label>
+                                                                <br/>
+                                                                <span>※ 카카오톡으로 알림을 받기 위해서는 카카오톡 연동을 하셔야 합니다.
+                                                                    <br/>
+                                                                    <a href="/kakao/login">카카오톡 연동하러가기</a>
+                                                                </span>
+                                                                <span class="alert-type-warning">※ 알림 방식은 하나만 선택할 수 있습니다.</span>
+                                                            </div>
+                                                        </div>
+                                                <!-- 알림 팝업 설정 및 닫기 -->
+                                                        <div class="alert-popup-btnWrap">
+                                                            <button class="alert-popup-check">설정</button>
+                                                            <button class="alert-popup-cancel2">닫기</button>
+                                                        </div>
+                                            </div> <!-- 알림 팝업 끝 -->
+                                        </span> <!-- ⋮ -->
+
+                                </div>
+                                <div class="card-body">
+                                    <p class="alert-curr-price" th:text="'📈 종가: ' + ${coin.nowprice} + '$'"></p>
+                                    <p th:text="'📉 변동: ' + ${coin.subprice} + '$'"></p>
+                                    <p th:text="'📊 변동률: ' + ${coin.subratio} + '%'"></p>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="right-panel"> <!-- 한국/미국/코인 테이블 -->
+            <!-- ✨ 오른쪽 top5 조회 -->
+            <div class="top5-container">
+                <h3>
+                    Top5 실시간 <span class="highlight-stock">한국 주식</span> 차트
+                    <span>(업데이트: <span id="top5-updated">00:00</span>)</span>
+                </h3>
+                <div class="top5-tabs">
+                    <div class="top5-tab kr-tab active" data-target="volume">거래량</div>
+                    <div class="top5-tab kr-tab" data-target="price">현재가</div>
+                    <div class="top5-tab kr-tab" data-target="increase">거래증가율</div>
+                </div>
+
+                <table class="top5-table">
+                    <thead>
+                    <tr>
+                        <th></th>
+                        <th>종목</th>
+                        <th>현재가</th>
+                        <th>전일거래량</th>
+                        <th>증가율</th>
+                    </tr>
+                    </thead>
+
+                    <!-- 거래량 -->
+                    <tbody id="table-volume">
+                    <tr th:if="${topByVolume.isEmpty()}">
+                        <td colspan="5">📭 아직 데이터가 없습니다. 잠시만 기다려 주세요.</td>
+                    </tr>
+                    <tr th:each="stock, iter : ${topByVolume}">
+                        <td th:text="${iter.count}"></td>
+                        <td th:text="${stock.htsKorIsnm}"></td>
+                        <td th:text="${stock.formattedStckPrpr}"></td> <!-- ✅ 변경 -->
+                        <td th:text="${stock.formattedPrdyVol}"></td>   <!-- ✅ 변경 -->
+                        <td th:text="${stock.volInrt}"
+                            th:class="${#strings.contains(stock.volInrt, '-') ? 'rate-cell negative' : 'rate-cell positive'}">
+                        </td>
+
+                    </tr>
+                    </tbody>
+
+                    <!-- 현재가 -->
+                    <tbody id="table-price" style="display: none;">
+                    <tr th:if="${topByPrice.isEmpty()}">
+                        <td colspan="5">📭 아직 데이터가 없습니다.</td>
+                    </tr>
+                    <tr th:each="stock, iter : ${topByPrice}">
+                        <td th:text="${iter.count}"></td>
+                        <td th:text="${stock.htsKorIsnm}"></td>
+                        <td th:text="${stock.formattedStckPrpr}"></td> <!-- ✅ 변경 -->
+                        <td th:text="${stock.formattedPrdyVol}"></td>   <!-- ✅ 변경 -->
+                        <td th:text="${stock.volInrt}"></td>
+                    </tr>
+                    </tbody>
+
+                    <!-- 증가율 -->
+                    <tbody id="table-increase" style="display: none;">
+                    <tr th:if="${topByIncrease.isEmpty()}">
+                        <td colspan="5">📭 아직 데이터가 없습니다.</td>
+                    </tr>
+                    <tr th:each="stock, iter : ${topByIncrease}">
+                        <td th:text="${iter.count}"></td>
+                        <td th:text="${stock.htsKorIsnm}"></td>
+                        <td th:text="${stock.formattedStckPrpr}"></td>  <!-- 💰 콤마 적용된 현재가 -->
+                        <td th:text="${stock.formattedPrdyVol}"></td>   <!-- 📊 콤마 적용된 전일 거래량 -->
+
+                        <!-- 📈📉 아이콘, 양음수에 따라 색상 클래스 적용 -->
+                        <td th:utext="${#strings.contains(stock.volInrt, '-') ?
+              '<span class=&quot;rate-cell negative&quot;>' + stock.volInrt + '</span>' :
+              '<span class=&quot;rate-cell positive&quot;>' + stock.volInrt + '</span>'}">
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+            <!-- ✨ 오른쪽 한국주식 top5 조회창 끝 -->
+
+            <!-- ✅ 미국 주식 테이블 추가 -->
+            <div class="top5-container">
+                <h3>
+                    Top5 실시간 <span class="highlight-stock">미국 주식</span> 차트
+                    <span>(업데이트: <span id="top5-updated-usa">00:00</span>)</span>
+                </h3>
+                <div class="top5-tabs">
+                    <div class="top5-tab usa-tab active" data-target="stckprpr">시가</div>
+                    <div class="top5-tab usa-tab" data-target="prdyvrss">변동금액</div>
+                    <div class="top5-tab usa-tab" data-target="prdyctrt">변동률</div>
+                </div>
+                <table class="top5-table">
+                    <thead>
+                    <tr>
+                        <th></th>
+                        <th>종목</th>
+                        <th>시가($)</th>
+                        <th>시가(₩)</th>
+                        <th>변동금액($)</th>
+                        <th>변동금액(₩)</th>
+                        <th>변동률</th>
+                    </tr>
+                    </thead>
+
+                    <!-- 시가 탭-->
+                    <tbody id="table-stckprpr" style="display: none;">
+                    <tr th:if="${top5ByPrice.isEmpty()}">
+                        <td colspan="5">📭 아직 데이터가 없습니다.</td>
+                    </tr>
+                    <tr th:each="stock, iter : ${top5ByPrice}">
+                        <td th:text="${iter.count}"></td>
+                        <td th:text="${stock.stockName}"></td>
+                        <td th:text="${stock.formattedStckprprUsd}"></td>  <!-- $ 적용된 현재가 -->
+                        <td th:text="${stock.stckprprWon}"></td>  <!-- ₩ 적용된 현재가 -->
+                        <td th:text="${stock.formattedPrdyvrssUsd}"></td>   <!-- $ 적용된 변동금액 -->
+                        <td th:text="${stock.prdyvrssWon}"></td>   <!-- ₩ 적용된 변동금액 -->
+                        <!-- 📈📉 아이콘, 양음수에 따라 색상 클래스 적용 -->
+                        <td th:utext="${#strings.contains(stock.formattedRate, '-') ?
+              '<span class=&quot;rate-cell negative&quot;>' + stock.formattedRate + '</span>' :
+              '<span class=&quot;rate-cell positive&quot;>' + stock.formattedRate + '</span>'}">
+                        </td>
+
+
+                    </tr>
+                    </tbody>
+
+                    <!-- 변동금액 탭-->
+                    <tbody id="table-prdyvrss" style="display: none;">
+                    <tr th:if="${top5ByVolume.isEmpty()}">
+                        <td colspan="5">📭 아직 데이터가 없습니다.</td>
+                    </tr>
+                    <tr th:each="stock, iter : ${top5ByVolume}">
+                        <td th:text="${iter.count}"></td>
+                        <td th:text="${stock.stockName}"></td>
+                        <td th:text="${stock.formattedStckprprUsd}"></td>  <!-- $ 적용된 현재가 -->
+                        <td th:text="${stock.stckprprWon}"></td>  <!-- ₩ 적용된 현재가 -->
+                        <td th:text="${stock.formattedPrdyvrssUsd}"></td>   <!-- $ 적용된 변동금액 -->
+                        <td th:text="${stock.prdyvrssWon}"></td>   <!-- ₩ 적용된 변동금액 -->
+                        <!-- 📈📉 아이콘, 양음수에 따라 색상 클래스 적용 -->
+                        <td th:utext="${#strings.contains(stock.formattedRate, '-') ?
+              '<span class=&quot;rate-cell negative&quot;>' + stock.formattedRate + '</span>' :
+              '<span class=&quot;rate-cell positive&quot;>' + stock.formattedRate + '</span>'}">
+                        </td>
+                    </tr>
+                    </tbody>
+
+                    <!-- 변동률 탭-->
+                    <tbody id="table-prdyctrt" style="display: none;">
+                    <tr th:if="${top5ByIncrease.isEmpty()}">
+                        <td colspan="5">📭 아직 데이터가 없습니다.</td>
+                    </tr>
+                    <tr th:each="stock, iter : ${top5ByIncrease}">
+                        <td th:text="${iter.count}"></td>
+                        <td th:text="${stock.stockName}"></td>
+                        <td th:text="${stock.formattedStckprprUsd}"></td>  <!-- $ 적용된 현재가 -->
+                        <td th:text="${stock.stckprprWon}"></td>  <!-- ₩ 적용된 현재가 -->
+                        <td th:text="${stock.formattedPrdyvrssUsd}"></td>   <!-- $ 적용된 변동금액 -->
+                        <td th:text="${stock.prdyvrssWon}"></td>   <!-- ₩ 적용된 변동금액 -->
+                        <!-- 📈📉 아이콘, 양음수에 따라 색상 클래스 적용 -->
+                        <td th:utext="${#strings.contains(stock.formattedRate, '-') ?
+              '<span class=&quot;rate-cell negative&quot;>' + stock.formattedRate + '</span>' :
+              '<span class=&quot;rate-cell positive&quot;>' + stock.formattedRate + '</span>'}">
+                        </td>
+                    </tr>
+                    </tbody>
+
+                </table>
+            </div>
+
+            <!-- 코인 테이블 시작!-->
+            <div class="top5-container">
+                <h3>
+                    Top5 실시간 <span class="highlight-stock">코인</span> 차트
+                    <span>(업데이트: <span id="top5-updated-coin">00:00</span>)</span>
+                </h3>
+                <div class="top5-tabs">
+                    <div class="top5-tab coin-tab active" data-target="coin-stckprpr">시가</div>
+                    <div class="top5-tab coin-tab" data-target="coin-prdyvrss">변동금액</div>
+                    <div class="top5-tab coin-tab" data-target="coin-prdyctrt">변동률</div>
+                </div>
+                <table class="top5-table">
+                    <thead>
+                    <tr>
+                        <th></th>
+                        <th>코인</th>
+                        <th>시가</th>
+                        <th>변동금액</th>
+                        <th>변동률</th>
+                    </tr>
+                    </thead>
+
+                    <!-- 시가 탭-->
+                    <tbody id="table-coin-stckprpr">
+                    <tr th:if="${topCoinPrice.isEmpty()}">
+                        <td colspan="5">📭 아직 데이터가 없습니다.</td>
+                    </tr>
+                    <tr th:each="coin, iter : ${topCoinPrice}">
+                        <td th:text="${iter.count}"></td>
+                        <td th:text="${coin.stockName}"></td>
+                        <td th:text="${coin.coinPriceWon}"></td>
+                        <td th:text="${coin.coinChangeWon}"></td>
+                        <td>
+  <span th:class="'rate-cell ' + (${#strings.contains(coin.coinChangeRate, '-') ? 'negative' : 'positive'})"
+        th:text="${coin.coinChangeRate}">변동률</span>
+                        </td>
+                    </tr>
+                    </tbody>
+
+                    <!-- 변동금액 탭-->
+                    <tbody id="table-coin-prdyvrss" style="display: none;">
+                    <tr th:if="${topCoinVol.isEmpty()}">
+                        <td colspan="5">📭 아직 데이터가 없습니다.</td>
+                    </tr>
+                    <tr th:each="coin, iter : ${topCoinVol}">
+                        <td th:text="${iter.count}"></td>
+                        <td th:text="${coin.stockName}"></td>
+                        <td th:text="${coin.coinPriceWon}"></td>
+                        <td th:text="${coin.coinChangeWon}"></td>
+                        <td>
+  <span th:class="'rate-cell ' + (${#strings.contains(coin.coinChangeRate, '-') ? 'negative' : 'positive'})"
+        th:text="${coin.coinChangeRate}">변동률</span>
+                        </td>
+                    </tr>
+                    </tbody>
+
+                    <!-- 변동률 탭-->
+                    <tbody id="table-coin-prdyctrt" style="display: none;">
+                    <tr th:if="${topCoinIncrease.isEmpty()}">
+                        <td colspan="5">📭 아직 데이터가 없습니다.</td>
+                    </tr>
+                    <tr th:each="coin, iter : ${topCoinIncrease}">
+                        <td th:text="${iter.count}"></td>
+                        <td th:text="${coin.stockName}"></td>
+                        <td th:text="${coin.coinPriceWon}"></td>
+                        <td th:text="${coin.coinChangeWon}"></td>
+                        <td>
+  <span th:class="'rate-cell ' + (${#strings.contains(coin.coinChangeRate, '-') ? 'negative' : 'positive'})"
+        th:text="${coin.coinChangeRate}">변동률</span>
+                        </td>
+                    </tr>
+                    </tbody>
+
+                </table>
+            </div>
+        </div>
+        <!-- 한국/미국 테이블 끝!-->
+
+    </div>
+</div>
+
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script th:src="@{/js/chartNews/searchResult.js}"></script>
+<script th:src="@{/js/favorite/rank.js}"></script>
+
+<!-- 알람 설정 js -->
+<script th:src="@{/js/favorites/alert.js}"></script>
+</body>
+</html>

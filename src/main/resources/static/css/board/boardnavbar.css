@@ -1,0 +1,90 @@
+.boardNav-nav {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 20px 0;
+}
+
+.boardNav-item {
+    position: relative;
+    display: flex;
+    align-items: center;
+    background-color: #222;
+    border: 2px solid #666;
+    border-radius: 25px;
+    padding: 3px 5px;
+    width: 500px;
+}
+
+/* 메인 검색 셀렉트박스 */
+.boardSearch-main-options {
+    border: none;
+    background-color: #444;
+    color: #E0E0E0;
+    font-size: 14px;
+    padding: 5px;
+    border-radius: 12px;
+    cursor: pointer;
+    outline: none;
+    text-align: center;
+    margin: 0px 5px 0px 15px;
+}
+
+.boardSearch-sub-options{
+    border: none;
+    background-color: #444;
+    color: #E0E0E0;
+    font-size: 14px;
+    padding: 5px;
+    border-radius: 12px;
+    cursor: pointer;
+    outline: none;
+    margin: 0px 5px 0px 5px;
+    text-align: center;
+}
+
+#searchInput {
+    flex-grow: 1;
+    border: none;
+    outline: none;
+    background: transparent;
+    color: #E0E0E0;
+    font-size: 16px;
+    padding: 8px;
+}
+
+.boardSearch-btn{
+    position: relative;
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 18px;
+    padding: 5px;
+    right: 10px;
+}
+
+#dateSearchWrap{
+    align-items: center;
+    gap: 5px;
+    margin: 0px 10px 0px 5px;
+}
+
+#startDate{
+    background-color: #444;
+    color: #E0E0E0;
+    border: none;
+    padding: 5px;
+    border-radius: 12px;
+    cursor: pointer;
+    outline: none;
+}
+
+#endDate{
+    background-color: #444;
+    color: #E0E0E0;
+    border: none;
+    padding: 5px;
+    border-radius: 12px;
+    cursor: pointer;
+    outline: none;
+}

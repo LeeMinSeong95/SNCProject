@@ -1,0 +1,141 @@
+@charset "UTF-8";
+
+/* 전체적인 body 스타일 */
+body {
+    background-color: #1E1E1E; /* 다크모드 배경 */
+    color: #E0E0E0; /* 밝은 글씨 */
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+}
+
+/* 메인 콘텐츠 영역 여백 */
+.main-container {
+    margin-top: 25px; /* 네비게이션 바를 피하기 위한 여백 */
+    padding: 20px;
+}
+
+#boardInsertArea{
+    display: flex;
+    justify-content: center;
+}
+
+#boardTitle {
+    font-size: 24px;
+    color: #FFA500;
+    margin: 10px 10px 25px 5px;
+}
+
+/* ----- 게시판 등록 페이지 css ----- */
+
+/* 컨텐츠 감싸는 영역 */
+#contentWrap {
+    border-radius: 12px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    background-color: #2A2A2A;
+    display: inline-grid;
+    width: 650px;
+}
+
+/* insertWrap */
+#insertWrap {
+    display : grid;
+}
+
+/* 셀렉트의 옵션들 */
+select > option {
+    text-align : center;
+}
+
+/* 타입 */
+#type {
+    margin : 0px 0px 20px 30px;
+    background-color: rgb(68, 68, 68);
+    color: rgb(224, 224, 224);
+    cursor: pointer;
+    border-radius: 12px;
+    width: 71px;
+    text-align: center;
+    height: 35px;
+}
+
+/* label 태그 */
+label {
+    margin: 10px 10px 15px 30px;
+}
+
+
+/* 닉네임 input */
+#nickName{
+    margin : 0px 0px 20px 30px;
+    width: 80%;
+    padding: 15px;
+    font-size: 18px;
+    border: 1px solid #444;
+    border-radius: 8px;
+    background-color: #333;
+    color: #E0E0E0;
+}
+
+/* 제목 */
+#title {
+    margin : 0px 0px 20px 30px;
+    width: 80%;
+    padding: 15px;
+    font-size: 18px;
+    border: 1px solid #444;
+    border-radius: 8px;
+    background-color: #333;
+    color: #E0E0E0;
+}
+
+/* 내용 */
+#content{
+    margin : 0px 0px 20px 30px;
+    width: 80%;
+    height : 255px;
+    padding: 15px;
+    font-size: 18px;
+    border: 1px solid #444;
+    border-radius: 8px;
+    background-color: #333;
+    color: #E0E0E0;
+}
+
+/* placeholder 위치 */
+#content::placeholder { /* 표준 */
+  position : relative;
+  top : -45%;
+}
+
+/* 글 등록  취소 버튼 영역 */
+#registerBtnArea{
+    right: -33%;
+    position: relative;
+    margin: 20px 0px 10px 0px;
+}
+
+/* 등록버튼 */
+#registerBtn{
+    margin-right:25px;
+    cursor : pointer;
+    background-color: #FFA500;
+    color: #1E1E1E;
+    width: 100px;
+    height: 50px;
+    border-radius: 10px;
+    font-family: 'Arial', sans-serif;
+}
+
+/* 취소 버튼 */
+#registerCancel{
+    margin-right:10px;
+    cursor : pointer;
+    background-color: #FFA500;
+    color: #1E1E1E;
+    width: 100px;
+    height: 50px;
+    border-radius: 10px;
+    font-family: 'Arial', sans-serif;
+}
+
+/* ----- -----*/

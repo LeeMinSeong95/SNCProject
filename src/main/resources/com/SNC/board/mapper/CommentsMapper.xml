@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.SNC.board.mapper.CommentsMapper">
+
+    <!-- 게시글 댓글 쓰기 -->
+    <insert id="commentsInsert">
+        INSERT INTO comments(CMT_ID, MBR_CD, BRD_ID, CMT_CONTENT, CMT_DT, CMT_UPDT)
+        VALUES(SNC.comments_seq.NEXTVAL, #{mbrCd}, #{boardId}, #{comment}, SYSDATE, NULL)
+    </insert>
+
+    <!-- 시퀀스 값 가져오가 -->
+    <select id="findByCommentsId" parameterType="Long">
+        SELECT SNC.comments_seq.CURRVAL
+        FROM DUAL
+    </select>
+
+    <!-- 게시글 댓글 쓰기 한 값 검색 -->
+    <select id="getByComments" parameterType="Long" resultType="com.SNC.board.dto.CommentsDto">
+        SELECT c.CMT_ID AS cmtId, m.MBR_CD AS mbrCd, m.MBR_NICKNAME AS mbrNickname, b.BRD_ID AS brdId, c.CMT_CONTENT AS cmtContent, TO_CHAR(c.CMT_DT, 'YYYY-MM-DD') AS cmtDt, TO_CHAR(c.CMT_UPDT, 'YYYY-MM-DD') AS cmtUpDt
+        FROM comments c JOIN board b
+        ON c.BRD_ID = b.BRD_ID
+        JOIN MEMBER m ON c.MBR_CD = m.MBR_CD
+        AND CMT_ID = #{cmtId}
+    </select>
+
+    <!-- 특정 게시글의 댓글 전체 검색 -->
+    <select id="getByBoardComment" parameterType="String" resultType="com.SNC.board.dto.CommentsDto">
+        SELECT c.CMT_ID AS cmtId, m.MBR_CD AS mbrCd, m.MBR_NICKNAME AS mbrNickname, b.BRD_ID AS brdId, DECODE(b.BRD_TYPE, '0', '국내', '1', '해외', '2', '코인', '3', '익명', '4', 'QnA') AS brdType, c.CMT_CONTENT AS cmtContent, TO_CHAR(c.CMT_DT, 'YYYY-MM-DD') AS cmtDt, TO_CHAR(c.CMT_UPDT, 'YYYY-MM-DD') AS cmtUpDt
+        FROM comments c JOIN board b
+        ON c.BRD_ID = b.BRD_ID
+        JOIN MEMBER m ON c.MBR_CD = m.MBR_CD
+        AND b.BRD_ID = #{brdId}
+        ORDER BY c.CMT_ID DESC
+    </select>
+
+    <!-- 게시글의 댓글 갯수 가져오기 -->
+    <select id="getByCommentsCnt" parameterType="String">
+        SELECT COUNT(CMT_ID) AS CNT
+        FROM COMMENTS
+        WHERE BRD_ID = #{brdId}
+    </select>
+
+    <!-- 댓글 삭제 -->
+    <delete id="deleteComment" parameterType="String">
+        DELETE FROM comments WHERE CMT_ID = #{id}
+    </delete>
+
+</mapper>

@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>캔들 차트</title>
+    <!-- 외부 CSS 연결 -->
+    <link rel="stylesheet" th:href="@{/css/chartNews/chartResultPage.css}"/>
+</head>
+<body>
+<!-- 헤더 영역 -->
+<header>
+    <h1 th:text="'검색어 : ' + ${keyword}"></h1>
+</header>
+
+<!-- 메인 컨텐츠 (좌측 사이드바 + 우측 차트) -->
+<main class="main-content">
+    <!-- 왼쪽 사이드바 -->
+    <section class="sidebar">
+        <!-- 검색창 -->
+        <div class="search-bar">
+
+        </div>
+
+        <!-- 코인 인기 목록 -->
+        <ul class="coin-list">
+            <li style="color: #ff3b30; font-weight: bold;">>관심있는 코인을 클릭해보세요<</li>
+            <li><a href="/candle?keyword=비트코인">비트코인</a></li>
+            <li><a href="/candle?keyword=이더리움">이더리움</a></li>
+            <li><a href="/candle?keyword=리플">엑스알피 [리플]</a></li>
+            <li><a href="/candle?keyword=트론">트론</a></li>
+            <li><a href="/candle?keyword=이오스">이오스</a></li>
+            <li><a href="/candle?keyword=비트코인 캐시">비트코인 캐시</a></li>
+            <li><a href="/candle?keyword=에이다">에이다</a></li>
+            <li><a href="/candle?keyword=이오스">이오스</a></li>
+            <li><a href="/candle?keyword=도지코인">도지코인</a></li>
+            <li><a href="/candle?keyword=스텔라루멘">스텔라루멘</a></li>
+        </ul>
+
+
+    </section>
+
+    <!-- 오른쪽 차트 영역 -->
+    <section class="chart-section">
+        <!-- 차트 타입 전환 버튼 그룹 -->
+        <div class="chart-controls" style="text-align: right; margin-bottom: 10px;">
+            <a th:href="@{/candle(keyword=${keyword}, type='month')}" class="type-btn">월(Month)</a>
+            <a th:href="@{/candle(keyword=${keyword}, type='week')}" class="type-btn">주(Week)</a>
+            <a th:href="@{/candle(keyword=${keyword}, type='day')}" class="type-btn">일(Day)</a>
+            <a th:href="@{/candle(keyword=${keyword}, type='minute')}" class="type-btn">분(Minute)</a>
+        </div>
+        <!-- 차트를 그릴 canvas -->
+        <canvas id="myChart" width="800" height="400"></canvas>
+    </section>
+</main>
+
+<!-- 푸터 -->
+<footer>
+    <p>© 2025 My Candle Chart Page</p>
+</footer>
+
+<!-- Chart.js & Candlestick 플러그인 CDN -->
+<script src="https://cdn.jsdelivr.net/npm/chart.js@3.9.1"></script>
+<script src="https://cdn.jsdelivr.net/npm/chartjs-chart-financial@0.1.0"></script>
+<script src="https://cdn.jsdelivr.net/npm/chartjs-adapter-date-fns"></script>
+
+<script th:inline="javascript">
+
+    // 1. 서버에서 전달된 chartList를 JSON 배열로 받아옴
+    /*<![CDATA[*/
+    var rawChartList = /*[[${chartList}]]*/ [];
+    console.log("rawChartList:", rawChartList);
+
+    // 2. 차트 데이터(캔들차트용) 가공: O, H, L, C
+    var chartData = rawChartList.map(function(item) {
+        return {
+            x: new Date(item.candle_date_time_kst),  // 예: "2023-03-01T00:30:00"
+            o: item.opening_price,  // 시가
+            h: item.high_price,     // 고가
+            l: item.low_price,      // 저가
+            c: item.trade_price     // 종가
+        };
+    });
+    console.log("chartData:", chartData);
+
+    // 2-1. 거래량 데이터(bar 차트용) 가공
+    //      예: item.acc_trade_volume, item.candle_acc_trade_volume 등
+    var volumeData = rawChartList.map(function(item) {
+        return {
+            x: new Date(item.candle_date_time_kst),
+            y: item.candle_acc_trade_volume // 필드명에 맞춰서 수정
+        };
+    });
+
+    // 3. 모든 봉의 가격 중 최소, 최대값을 구해 y축 범위를 살짝 여유있게 설정
+    var allPrices = chartData.flatMap(function(item) {
+        return [item.o, item.h, item.l, item.c];
+    });
+    var minPrice = Math.min(...allPrices) - 500;
+    var maxPrice = Math.max(...allPrices) + 500;
+    console.log("minPrice:", minPrice, "maxPrice:", maxPrice);
+
+    // 4. 캔버스 컨텍스트 가져오기
+    var ctx = document.getElementById('myChart').getContext('2d');
+
+    //  숫자를 3자리마다 콤마로 끊어주기위함. 100,000 이런식으로 시가,고가,종가 표현함.
+    function numberWithCommas(x) {
+        if (!x) return x; // x가 undefined/null인 경우 방어
+        return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+    }
+
+    // 5. 차트 생성
+    new Chart(ctx, {
+        data: {
+            datasets: [
+                // (1) 캔들차트 데이터셋
+                {
+                    type: 'candlestick',
+                    label: '캔들차트',
+                    data: chartData,
+                    // 캔들(Body) 및 꼬리(Wick) 색상
+                    color: {
+                        up: '#ff3b30',    // 상승봉 색상 (빨간색 계열)
+                        down: '#007aff',  // 하락봉 색상 (파란색 계열)
+                        unchanged: '#999'
+                    },
+                    borderColor: {
+                        up: '#ff3b30',
+                        down: '#007aff',
+                        unchanged: '#999'
+                    },
+                    wickColor: {
+                        up: '#ff3b30',
+                        down: '#007aff',
+                        unchanged: '#999'
+                    },
+                    borderWidth: 1, // 봉(Body) 테두리 두께
+                    wickWidth: 1,   // 꼬리(Wick) 두께
+                    yAxisID: 'yPrice' // 캔들차트용 y축
+                },
+                // (2) 거래량 데이터셋 (막대차트)
+                {
+                    type: 'bar',
+                    label: '거래량',
+                    data: volumeData,
+                    yAxisID: 'yVolume',       // 거래량용 y축
+                    backgroundColor: '#aaa'   // 막대 색상
+                }
+            ]
+        },
+        options: {
+            scales: {
+                x: {
+                    type: 'time',
+                    // 시간 단위를 분, 시, 일 등 원하는 형태로 변경
+                    time: {
+                        unit: 'month',
+                        displayFormats: {
+                            minute: 'MM/dd HH:mm'
+                        }
+                    }
+                },
+                // 캔들차트 가격축
+                yPrice: {
+                    type: 'linear',
+                    position: 'left',
+                    min: minPrice,
+                    max: maxPrice,
+                    title: {
+                        display: true,
+                        text: '가격 (KRW)'
+                    }
+                }
+            },
+            plugins: {
+                // 마우스 툴팁 설정
+                tooltip: {
+                    callbacks: {
+                        label: function(context) {
+                            // 캔들차트 툴팁
+                            if (context.dataset.type === 'candlestick') {
+                                var o = context.raw.o;
+                                var h = context.raw.h;
+                                var l = context.raw.l;
+                                var c = context.raw.c;
+                                return [
+                                    '시가: ' + numberWithCommas(o),
+                                    '고가: ' + numberWithCommas(h),
+                                    '저가: ' + numberWithCommas(l),
+                                    '종가: ' + numberWithCommas(c)
+                                ];
+                            }
+                            // 거래량 막대 툴팁
+                            else if (context.dataset.type === 'bar') {
+                                var vol = context.raw.y;
+                                return '거래량: ' + numberWithCommas(vol);
+                            }
+                        }
+                    }
+                }
+            },
+            // 봉 간격/두께 조절 요소
+            elements: {
+                candlestick: {
+                    barPercentage: 0.8,
+                    categoryPercentage: 0.9
+                }
+            }
+        }
+    });
+    /*]]>*/
+</script>
+
+
+
+
+</body>
+</html>

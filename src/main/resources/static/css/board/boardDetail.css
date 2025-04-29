@@ -1,0 +1,242 @@
+@charset "UTF-8";
+
+/* 전체적인 body 스타일 */
+body {
+    background-color: #1E1E1E; /* 다크모드 배경 */
+    color: #E0E0E0; /* 밝은 글씨 */
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+}
+
+/* 메인 콘텐츠 영역 여백 */
+.main-container {
+    margin-top: 25px; /* 네비게이션 바를 피하기 위한 여백 */
+    padding: 20px;
+}
+
+
+/* contents 들이 들어올 영역 */
+/* 헤더 머릿말 */
+#dynamicHeader{
+    margin-left: 150px;
+    font-size: 24px;
+    color: #FFA500;
+}
+
+/* 게시글 컨텐츠 영역 */
+#boardContentWrap{
+    margin-left: 150px;
+}
+
+/* 게시글 내용 영역 */
+#brdConWrap{
+    margin: 25px 0px 25px 0px;
+    width: 700px;
+    height: 380px;
+}
+
+
+/* 게시글 수정 삭제 팝업 css */
+#settingPopWrap{
+    width: 20px;
+    height: 15px;
+    display: inline-block;
+    margin-left: 10px;
+    cursor : pointer;
+    position: relative;
+}
+
+#PopUpWrap{
+    position: absolute; /* 부모 요소와 독립적으로 위치 설정 */
+    top: 100%; /* 점 세 개 아래에 위치하도록 */
+    left: 0;
+    width: 140px;
+    height: 95px;
+    border-radius: 12px;
+    box-shadow: rgba(0, 0, 0, 0.3) 0px 4px 8px;
+    background-color: rgb(42, 42, 42);
+    z-index: 10; /* 팝업이 다른 요소 위로 오도록 */
+}
+
+#PopUpWrap > button {
+    width: calc(100% - 20px);
+    margin: 10px auto;
+    text-align: center;
+    background-color: #FFA500;
+    border-radius: 12px;
+    height: 32px;
+}
+
+#hiddenUpTitle{
+    width: 288px;
+    height: 32px;
+    margin: 20px 0px 20px 0px;
+    border-radius: 12px;
+    background-color: #333;
+    color: #E0E0E0;
+    border: 1px solid #444;
+    padding: 15px;
+}
+
+#hiddenUpCon{
+    width: 700px;
+    height: 380px;
+    border-radius: 12px;
+    background-color: #333;
+    color: #E0E0E0;
+    border: 1px solid #444;
+    padding: 15px;
+}
+
+/*----- Detail페이지 댓글 쓰기 영역 -----*/
+/* 쓰기 영역 전체를 감싸는 div */
+#commentWriteArea{
+    border: 1px solid black;
+    width: 37%;
+    position: relative;
+    left: 460px;
+    border-radius: 12px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    background-color: #2A2A2A;
+    margin: 50px 0px 100px 0px;
+    height: 143px;
+}
+
+#commentWriteArea label {
+    white-space: nowrap; /* 줄바꿈 방지 */
+}
+
+/* 라벨을 감싸는 div */
+#labelArea{
+    text-align: left;
+    margin: 10px 0px 0px 30px;
+}
+
+/*textarea 태그를 감싸는 div*/
+#textareaWrap {
+    flex-grow: 1; /* 가운데 영역 확장 */
+    text-align:center;
+}
+
+
+/*textarea 실제 코멘트를 작성할 태그*/
+#comment{
+    width: 85%;
+    height: 30px;
+    margin: 10px 10px 10px 5px;
+    font-size: 20px;
+    border-radius: 12px;
+    padding: 5px;
+    background-color: #333;
+    color: #E0E0E0;
+    border: 1px solid #444;
+}
+
+/*댓글 등록 버튼을 감싸는 div*/
+#commentUpWrap{
+    text-align: end;
+    margin: 7px 10px 10px 10px;
+}
+
+/*등록 버튼*/
+#commentFormBtn {
+    white-space: nowrap;
+    cursor: pointer;
+    background-color: #FFA500;
+    color: #1E1E1E;
+    border-radius: 10px;
+    font-family: 'Arial', sans-serif;
+    width: 80px;
+    height: 30px;
+}
+
+
+
+
+
+/* 댓글 작성 후 생기는 영역 */
+#commentUpdateWrap{
+    margin: 20px 0px 0px 110px;
+}
+
+ul {
+    list-style-type: none;
+}
+
+/* 댓글 삭제 버튼 */
+.commentDeleteBtn{
+    margin-left: 490px;
+    cursor : pointer;
+}
+
+
+/* 수정버튼 */
+#updateRCBtnWrap{
+    display: flex;
+    margin: 70px 10px 10px 140px;
+}
+
+#updateRegisterBtn{
+    margin: 10px 25px 10px 10px;
+    width: 100px;
+    height: 50px;
+    border-radius: 12px;
+    cursor: pointer;
+    background-color: #FFA500;
+}
+
+#updateCancelBtn{
+    margin: 10px 25px 10px 10px;
+    width: 100px;
+    height: 50px;
+    border-radius: 12px;
+    cursor: pointer;
+    background-color: #FFA500;
+}
+
+
+/* 좋아요 wrap */
+#boardLikeWrap{
+    border: 1px solid black;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    background-color: #2A2A2A;
+    height: 110px;
+    width: 15%;
+    border-radius: 12px;
+    text-align: center;
+    margin: 0px 0px 0px 650px;
+}
+
+.like-button{
+    width: 50px;
+    height: 55px;
+    border: none;
+    background-color: #2A2A2A;
+    color: #FF007F;
+    cursor: pointer;
+    font-size: 40px;
+    margin: 20px 10px 0px 0px;
+}
+
+.like-count{
+    border: none;
+    background-color: #2A2A2A;
+    color: #D5D5D5;
+    font-size: 30px;
+}
+
+/* 목록으로 버튼 */
+.back-list-wrap{
+    margin: 20px 0px 0px 150px;
+}
+
+.back-to-list{
+    width: 150px;
+    height: 50px;
+    cursor: pointer;
+    border-radius: 12px;
+    font-size: 17px;
+    background-color: #FFA500;
+    color: #1E1E1E;
+    font-family: 'Arial', sans-serif;
+}

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.SNC.bookMark.mapper.BookMarkMapper">
+
+    <select id="findAllBookMarkByMember" resultType="com.SNC.bookMark.dto.BookMarkDTO">
+        SELECT
+            b.item_type AS itemType,
+            CASE
+                WHEN b.item_type = '001' THEN kr.KRSTOCK_MARK_NM
+                WHEN b.item_type = '002' THEN us.USSTOCK_MARK_NM
+                WHEN b.item_type = '003' THEN coin.COIN_MARK_NM
+            END AS ticker,
+            CASE
+                WHEN b.item_type = '001' THEN kr.KRSTOCK_KR_NM
+                WHEN b.item_type = '002' THEN us.USSTOCK_KR_NM
+                WHEN b.item_type = '003' THEN coin.COIN_KR_NM
+            END AS name,
+            b.mark_id as markId,
+            b.item_id AS itemId
+        FROM BOOKMARK b
+        LEFT JOIN KRSTOCK kr ON b.item_type = '001' AND b.item_id = kr.KRSTOCK_ID
+        LEFT JOIN USSTOCK us ON b.item_type = '002' AND b.item_id = us.USSTOCK_ID
+        LEFT JOIN COIN coin ON b.item_type = '003' AND b.item_id = coin.COIN_ID
+        WHERE b.mbr_cd = #{mbrId}
+        AND b.mark_yn = 'Y'
+    </select>
+
+</mapper>

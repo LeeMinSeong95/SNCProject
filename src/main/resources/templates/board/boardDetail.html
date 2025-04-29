@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="_csrf" th:content="${_csrf.token}"/>
+    <meta name="_csrf_header" th:content="${_csrf.headerName}"/>
+    <title>Title</title>
+
+    <!-- CSS 파일 불러오기 -->
+    <link rel="stylesheet" th:href="@{/css/navigation/sideBar.css}">
+    <!-- boardDetail.css 파일 -->
+    <link rel="stylesheet" th:href="@{/css/board/boardDetail.css}">
+</head>
+<body>
+<!-- 네비게이션 -->
+<div th:replace="~{navigation/navbar :: navbar}"></div>
+
+<div class="main-container">
+    <div id="detailWrap">
+        <!--주식 게시판-->
+        <!-- h1 태그의 내용을 boardType에 따라 변경 -->
+        <h1 id="dynamicHeader" th:text="${board.brdType != null && (board.brdType == '0' || board.brdType == '1') ? '주식 게시판' :
+               (board.brdType == '2' ? '코인 게시판' :
+               (board.brdType == '3' || board.brdType == '4' ? '익명 게시판' : '기타 게시판'))}"></h1>
+
+        <!-- 머릿말과 컨텐츠 나누는 선 -->
+        <hr style="width: 54.5%; margin: 20px 0px 20px 150px;">
+
+        <!-- th로 들어올본문 영역 -->
+        <div id="boardContentWrap">
+            <input type="hidden" id="hiddenBrdId" th:value="${board.brdId}">
+            <input type="hidden" id="hiddenMbrCd" th:value="${board.mbrCd}">
+
+            <!-- 게시글 제목 -->
+            <h2 id="titleBN" th:text="${board.brdTitle}"></h2>
+            <input type="text" id="hiddenUpTitle" style="display:none;" placeholder="수정할 제목을 입력해주세요.">
+
+            <!-- 작성자 -->
+            <span>작성자 : </span>
+            <span th:text="${board.brdType == '3' || board.brdType == '4' ? '익명' : board.mbrNickname}"></span>
+
+            <span>|</span>
+
+            <!-- 좋아요 개수 -->
+            <span>❤️</span>
+            <span class="content-like-cnt" th:text="${likeCnt}"></span>
+
+            <span>|</span>
+
+            <!-- 댓글개수 -->
+            <span>
+                댓글 :
+                <i class="content-comment-cnt" th:text="${cmtCnt != null && cmtCnt > 0} ? ${cmtCnt} : '0'"></i>
+            </span>
+
+            <span>|</span>
+
+            <!-- 작성날 -->
+            <span th:text="${board.brdUpdt != null ? board.brdUpdt + ' (수정됨)' : board.brdDt}"></span>
+
+            <span>|</span>
+
+            <!-- 수정 & 삭제 -->
+            <!-- 미니 세팅 팝업 -->
+            <div id="settingPopWrap">
+                <span id="brdUpAndDelWrap" th:if="${board.mbrNickname == mbrNickname}">⋮</span>
+
+                <div id="PopUpWrap" style="display:none;">
+                    <button id="boardUpdateBtn" style="display:block;">수정 하기</button>
+                    <button id="boardDeleteBtn" style="display:block;">삭제 하기</button>
+                </div>
+
+            </div>
+
+            <!-- 게시글 내용 -->
+            <div id="brdConWrap">
+                <div id="contentBN" th:text="${board.brdContent}"></div>
+                <input type="text" id="hiddenUpCon" style="display:none;" placeholder="수정할 내용을 작성해주세요.">
+            </div>
+
+        </div>
+
+        <!-- 제목,내용 수정 영역 -->
+        <div id="updateRCBtnWrap" style="display:none;">
+            <button id="updateRegisterBtn">수정 완료</button>
+            <button id="updateCancelBtn">수정 취소</button>
+        </div>
+
+            <!-- 좋아요 버튼 -->
+            <div id="boardLikeWrap">
+                <button id="likeButton" class="like-button">
+                    <span class="like-span-btn" th:text="${likeUser != null  ? '❤️' : '♡'}"></span>
+                </button>
+                <span id="likeCount" class="like-count" th:text="${likeCnt}"></span>
+            </div>
+
+        <!--댓글 쓰기 영역-->
+        <div id="commentWriteArea">
+            <input type="hidden" id="writerMbrId" name="mbrCd" th:value="${mbrCd}">
+            <div id="labelArea">
+                <label for="comment">댓글 </label>
+            </div>
+            <div id="textareaWrap">
+                <textarea id="comment" placeholder="댓글을 입력해주세요."></textarea>
+            </div>
+            <div id="commentUpWrap">
+                <button type="button" id="commentFormBtn">댓글 등록</button>
+            </div>
+        </div>
+
+        <!-- ajax로 들어올 댓글 영역 -->
+        <div id="commentUpdateWrap">
+            <div id="commentListWrap">
+                <ul class="ajax_th">
+                    <!-- ajax & th로 생성 되어야 할 영역 -->
+                    <li class="commentItem" th:each="cmtInfo : ${cmtInfo}">
+                        <div id="commentInfo">
+                            <div class="infoLeft" th:if="${cmtInfo != null}">
+                                <span th:text="${cmtInfo.brdType == '익명' or cmtInfo.brdType == 'QnA' ? '익명' : cmtInfo.mbrNickname}"></span>
+                                <span class="bar">|</span>
+                                <span class="comment_date" th:text="${cmtInfo.cmtDt}"></span>
+                                <!-- data-cmt-id에 댓글 ID를 저장 -->
+                                <span th:if="${mbrCd == cmtInfo.mbrCd}" class="commentDeleteBtn" th:data-cmt-id="${cmtInfo.cmtId}">삭제</span>
+                            </div>
+                        </div>
+                        <div id=" commentContent">
+                            <p th:text="${cmtInfo.cmtContent}"></p>
+                        </div>
+                        <!-- 컨텐츠 나누는 선 -->
+                        <hr style="width: 54.5%; margin: 20px 0px 20px 0px;">
+                    </li>
+
+                </ul>
+            </div>
+        </div>
+
+        <!-- 목록으로 돌아가기 -->
+        <div class="back-list-wrap">
+            <button class="back-to-list">목록으로</button>
+        </div>
+
+    </div>
+</div>
+
+
+<!-- 기본 js -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+<script th:src="@{/js/board/boardDetail.js}"></script>
+
+</body>
+</html>

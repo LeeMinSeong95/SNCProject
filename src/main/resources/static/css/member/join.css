@@ -1,0 +1,102 @@
+@charset "UTF-8";
+
+body {
+    background-color: #1E1E1E; /* 다크모드 배경 */
+    color: #E0E0E0; /* 밝은 글씨 */
+    font-family: 'Arial', sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+/* ✅ 회원가입 페이지 중앙 배치 */
+.contentWrap {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+/* ✅ 회원가입 박스 스타일 */
+#joinArea {
+    background-color: #2A2A2A; /* 다크모드 카드 스타일 */
+    padding: 40px;
+    border-radius: 12px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    width: 400px;
+    text-align: center;
+}
+
+/* ✅ 제목 스타일 */
+#joinHeader h2 {
+    margin-bottom: 20px;
+    font-size: 26px;
+    color: #FFA500; /* 주황색 포인트 */
+}
+
+/* ✅ 입력 필드 스타일 */
+ul {
+    list-style: none;
+    padding: 0;
+}
+
+li {
+    margin-bottom: 20px; /* ✅ 입력칸 간격 증가 */
+    text-align: left;
+}
+
+.span_area {
+    margin-bottom: 5px;
+    font-size: 16px;
+    color: #E0E0E0;
+}
+
+input {
+    width: 92%;
+    padding: 15px; /* ✅ 크기 1.5배 증가 */
+    font-size: 18px; /* ✅ 글자 크기 키움 */
+    border: 1px solid #444;
+    border-radius: 8px;
+    background-color: #333;
+    color: #E0E0E0;
+}
+
+/* ✅ 에러 메시지 스타일 */
+#passError {
+    color: red;
+    font-size: 14px;
+    display: none;
+}
+
+/* ✅ 회원가입 버튼 */
+#insertBtn, #cancelBtn {
+    width: 100%; /* ✅ 버튼 크기 입력칸과 동일하게 */
+    padding: 15px; /* ✅ 크기 증가 */
+    font-size: 18px; /* ✅ 버튼 글씨 키움 */
+    font-weight: bold;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+#insertBtn {
+    background-color: #FFA500; /* 주황색 포인트 */
+    color: #1E1E1E;
+    margin-bottom: 10px; /* ✅ 버튼 간격 조정 */
+}
+
+#insertBtn:hover {
+    background-color: #FF8C00;
+}
+
+#cancelBtn {
+    background-color: #555;
+    color: #FFFFFF;
+}
+
+#cancelBtn:hover {
+    background-color: #777;
+}

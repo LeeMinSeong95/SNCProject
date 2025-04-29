@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>사이드바</title>
+</head>
+<body>
+
+<!-- ✅ 네비게이션 바를 fragment로 정의 -->
+<div th:fragment="navbar">
+  <!-- ✅ 사이드바 -->
+  <div class="sidebar">
+    <!-- ✅ 프로필 섹션 -->
+    <div class="profile-section">
+      <img th:src="@{/images/default_profile.png}" alt="프로필">
+      <p class="nickname" th:text="${nickname}">사용자</p>
+    </div>
+
+    <!-- ✅ 구분선 -->
+    <div class="divider"></div>
+
+    <ul class="navbar-nav">
+
+      <li class="nav-item">
+        <a class="nav-link" href="/main/home">
+          <img th:src="@{/images/home_icon.png}" alt="홈 아이콘" class="menu-icon">
+          <span>홈</span>
+        </a>
+      </li>
+
+      <li class="nav-item" th:if="${#authorization.expression('!isAuthenticated()')}">
+        <a class="nav-link" href="/login/home">
+          <img th:src="@{/images/login.png}" alt="로그인 아이콘" class="menu-icon">
+          <span>로그인</span>
+        </a>
+      </li>
+
+      <li class="nav-item" th:if="${#authorization.expression('!isAuthenticated()')}">
+        <a class="nav-link" href="/register/join">
+          <img th:src="@{/images/join.png}" alt="회원가입 아이콘" class="menu-icon">
+          <span>회원가입</span>
+        </a>
+      </li>
+
+      <li class="nav-item">
+        <a class="nav-link" href="/board/home">
+          <img th:src="@{/images/board.png}" alt="게시판 아이콘" class="menu-icon">
+          <span>게시판</span>
+        </a>
+      </li>
+
+      <li class="nav-item">
+        <a class="nav-link" th:href="@{/favorite/top5}">
+          <img th:src="@{/images/favorite.png}" alt="즐겨찾기 아이콘" class="menu-icon">
+          <span>즐겨찾기</span>
+        </a>
+      </li>
+
+      <li class="nav-item">
+        <a class="nav-link" th:href="@{/itemdetail/krstock}">
+          <img th:src="@{/images/krstock.png}" alt="한국주식 아이콘" class="menu-icon">
+          <span>한국주식</span>
+        </a>
+      </li>
+
+      <li class="nav-item">
+        <a class="nav-link" th:href="@{/itemdetail/usstock}">
+          <img th:src="@{/images/usstock.png}" alt="미국주식 아이콘" class="menu-icon">
+          <span>미국주식</span>
+        </a>
+      </li>
+
+      <li class="nav-item">
+        <a class="nav-link" th:href="@{/itemdetail/coin}">
+          <img th:src="@{/images/coin.png}" alt="코인 아이콘" class="menu-icon">
+          <span>코인</span>
+        </a>
+      </li>
+
+      <li class="nav-item">
+        <a class="nav-link" th:href="@{/allCoinNews}">
+          <img th:src="@{/images/news.png}" alt="뉴스보기 아이콘" class="menu-icon">
+          <span>뉴스보기</span>
+        </a>
+      </li>
+
+    </ul>
+  </div>
+</div>
+
+</body>
+</html>

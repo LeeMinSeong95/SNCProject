@@ -1,0 +1,88 @@
+server :
+  port : 8090
+  servlet:
+    encoding:
+      charset: UTF-8
+      enabled: true
+      force: true
+spring :
+  application :
+    name : sncproject
+  messages:
+    encoding: UTF-8
+    mvc:
+      locale: ko_KR
+      locale-resolver: fixed
+  datasource:
+    url: jdbc:oracle:thin:@localhost:1521/XE
+    username: snc
+    password: snc1!
+    driver-class-name: oracle.jdbc.OracleDriver
+
+  mybatis:
+    configuration:
+      map-underscore-to-camel-case: true
+    type-aliases-package: com.SNC.member.dto, com.SNC.board.dto, com.SNC.itemdetail.dto
+    mapper-locations: classpath:com/SNC/**/*.xml
+    
+  thymeleaf:
+    cache: false
+    enabled: true
+    prefix: classpath:/templates/
+    suffix: .html
+
+  redis:
+    host: localhost
+    port: 6379
+
+  mail:
+    host: smtp.gmail.com
+    port: 587
+    username: # 실제 구글 이메일
+    password: # 실제 App Key
+    properties:
+      mail:
+        smtp:
+          auth: true
+          starttls:
+            enable: true
+
+news:
+  api:
+    secret: # 실제 시크릿 키
+    client: # 실제 키
+
+gold:
+  api: # 실제 키
+
+currency:
+  api: # 실제 키
+
+koreastock:
+  api:
+    token: # 실제 토큰
+    key: # 실제 키
+    secret: # 실제 API 키
+
+kakao:
+  rest-api-key: # 실제 REST API KEY
+  redirect-uri: # 인증 코드를 받기 위한 redirect-uri 주소
+  client-secret: # 시크릿 Key
+
+external:
+  uri:
+    coin: wss://pubwss.bithumb.com/pub/ws
+    stock: ws://ops.koreainvestment.com:21000/tryitout/H0STCNT0
+    korea-stock-rest: https://openapi.koreainvestment.com:9443/uapi/domestic-stock/v1/quotations/inquire-price
+    korea-stock-candle: https://openapi.koreainvestment.com:9443/uapi/domestic-stock/v1/quotations/inquire-daily-itemchartprice
+    usa-stock-rest: https://openapi.koreainvestment.com:9443/uapi/overseas-price/v1/quotations/price
+    usa-stock-candle: https://openapi.koreainvestment.com:9443/uapi/overseas-price/v1/quotations/dailyprice
+    coin-ticker: https://api.bithumb.com/v1/ticker
+    coin-candle: https://api.bithumb.com/v1/candles/days
+    kr-market: https://openapi.koreainvestment.com:9443/uapi/domestic-stock/v1/quotations/inquire-index-price
+    gold: https://www.goldapi.io/api
+    currency: https://api.freecurrencyapi.com/v1
+
+token:
+  uri: https://openapi.koreainvestment.com:9443/oauth2/tokenP
+  grant_type: client_credentials

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.SNC.coinFavorites.mapper.CoinMapper">
+
+    <!-- 코인 정보 삽입 -->
+    <insert id="insertCoinInfo" parameterType="com.SNC.coinFavorites.vo.CoinInfoVo">
+        INSERT INTO SNC.COIN (
+            COIN_ID,
+            COIN_MARK_NM,
+            COIN_KR_NM,
+            COIN_ENG_NM,
+            COIN_MARK_YN
+        )
+        VALUES (
+                   #{coinId},
+                   #{coinMarkNm},
+                   #{coinKrNm},
+                   #{coinEngNm},
+                   #{coinMarkYn}
+               )
+    </insert>
+
+</mapper>

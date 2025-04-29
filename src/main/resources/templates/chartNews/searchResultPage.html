@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>뉴스 리스트 - 다크 모드</title>
+    <link rel="stylesheet" th:href="@{/css/chartNews/searchResultPage.css}">
+</head>
+<body>
+<div class="container">
+    <h1 class="title">주요뉴스 - 토큰포스트 | 속보 - <span class="highlight">COINESS</span></h1>
+
+    <!-- 리스트 스타일을 적용하려면 list-style, margin, padding 등을 초기화하는 것이 좋습니다. -->
+    <ul class="news-list">
+        <li th:each="news : ${newsList}" class="news-item">
+            <!-- 이미지 영역 -->
+            <div th:if="${news.validateImageLink()}">
+                <img th:src="${news.imageLink}" alt="뉴스 이미지">
+            </div>
+
+            <!-- 텍스트(내용) 영역 -->
+            <div class="news-content">
+                <h3 class="news-title" th:utext="${news.title}"></h3>
+                <p class="news-description" th:text="${news.description}"></p>
+
+                <!-- 실제 URL이 너무 길 경우, a태그 안의 텍스트는 '원문 보기' 같은 것으로 대체해도 좋습니다. -->
+                <a th:href="${news.link}" target="_blank" rel="noopener noreferrer"
+                   th:text="${news.link}"></a>
+            </div>
+        </li>
+    </ul>
+</div>
+</body>
+</html>

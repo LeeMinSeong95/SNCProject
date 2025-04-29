@@ -1,0 +1,293 @@
+@charset "UTF-8";
+
+/* !html 생성 하고 항상 해당 페이지마다 class나 id 설정해서 넣어줘야 마진 적용됨 */
+
+/* 추가 css */
+/* 메인페이지 검색바 */
+#searchWrap {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    height: 5vh;
+    flex-direction: column-reverse;
+}
+
+#searchArea {
+    display: flex;
+    justify-content: center; /* 선택창과 입력창 가로 중앙 정렬 */
+    gap: 10px; /* 선택창과 입력창 사이 여백 */
+    align-items: center; /* 선택창과 입력창 세로 중앙 정렬 */
+}
+
+#searchValue {
+    width : 210px;
+}
+
+/* 기존 사이드바 영역 */
+.contentWrap {
+    margin-left: 140px;
+    margin-right: 80px;
+    padding: 80px 20px 20px;
+    text-align: center;
+}
+
+body {
+    background-color: #121212;
+    color: #E0E0E0;
+}
+
+.tables-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    gap: 20px;
+    width: 100%;
+    flex-wrap: nowrap;
+}
+
+.data-table {
+    width: 520px;
+    border-collapse: collapse;
+    background-color: #222;
+    color: #E0E0E0;
+    margin: 0 auto;
+    border-radius: 12px;
+    overflow: hidden;
+    table-layout: fixed;
+}
+
+.data-table thead {
+    background-color: #333;
+    color: #fff;
+    border-radius: 12px;
+}
+
+.data-table th,
+.data-table td {
+    width: 25%
+    white-space: nowrap;
+    overflow : hidden;
+    border: 1px solid #444;
+    padding: 10px 12px;
+    text-align: right;
+    font-size: 0.9em;
+    text-overflow: ellipsis;
+}
+.data-table th {
+    text-align: center; /* 헤더만 가운데 정렬 */
+}
+.data-table tr {
+    height: 50px;
+}
+
+.data-table tbody tr:hover {
+    background-color: #444;
+}
+
+.positive {
+    color: #FFB347;
+    font-weight: bold;
+}
+
+.negative {
+    color: #30E3CA;
+    font-weight: bold;
+}
+
+.ticker-item.positive {
+    color: #FFB347;
+    font-weight: bold;
+}
+
+.ticker-item.negative {
+    color: #30E3CA;
+    font-weight: bold;
+}
+
+.data-table th:first-child,
+.data-table td:first-child {
+    border-top-left-radius: 12px;
+    border-bottom-left-radius: 12px;
+}
+
+.data-table th:last-child,
+.data-table td:last-child {
+    border-top-right-radius: 12px;
+    border-bottom-right-radius: 12px;
+}
+
+.search-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 20px 0;
+}
+
+.search-box {
+    position: relative;
+    display: flex;
+    align-items: center;
+    background-color: #222;
+    border: 2px solid #666;
+    border-radius: 25px;
+    padding: 3px 5px;
+    width: 350px;
+}
+
+.search-box input {
+    flex-grow: 1;
+    border: none;
+    outline: none;
+    background: transparent;
+    color: #E0E0E0;
+    font-size: 16px;
+    padding: 8px;
+}
+
+.search-box .search-btn {
+    position: relative;
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 18px;
+    padding: 5px;
+    right: 10px;
+}
+
+.search-box .search-options {
+     border: none;
+     background-color: #444;
+     color: #E0E0E0;
+     font-size: 14px;
+     padding: 5px;
+     border-radius: 12px;
+     cursor: pointer;
+     outline: none;
+}
+
+.search-box .search-options:hover {
+    background-color: #555;
+}
+
+.change-value,
+.change-rate,
+.price {
+    min-width: 80px;
+    max-width: 120px;
+}
+
+/* ✅ 티커 바 전체 컨테이너 */
+.ticker-container {
+    width: 100%;
+    overflow: hidden;
+    background-color: #222;
+    padding: 10px 0;
+    border-top: 2px solid #444;
+    border-bottom: 2px solid #444;
+    white-space: nowrap;
+    position: relative;
+}
+
+/* ✅ 티커 감싸는 래퍼 */
+.ticker-wrap {
+    display: flex;
+    width: 100%;
+    overflow: hidden;
+    position: relative;
+}
+
+/* ✅ 티커 바 내부 (스크롤되는 부분) */
+.ticker {
+    display: flex;
+    gap: 50px; /* 아이템 간격 */
+    position: relative; /* ✅ 절대 위치를 상대 위치로 변경 */
+    white-space: nowrap;
+    animation: tickerScroll 30s linear infinite;
+}
+
+/* ✅ 개별 티커 항목 */
+.ticker-item {
+    display: inline-block;
+    padding: 10px 20px;
+    font-size: 16px;
+    color: #E0E0E0;
+    font-weight: bold;
+    visibility: visible; /* ✅ 요소가 숨겨지는 문제 방지 */
+    align-items: center;
+
+}
+
+/* ✅ 티커 바 애니메이션 */
+@keyframes tickerScroll {
+    from {
+        transform: translateX(100%);
+    }
+    to {
+        transform: translateX(-100%);
+    }
+}
+
+/* ✅ 닉네임 컨테이너 (배경색 O) */
+.nickname-container {
+    position: absolute;
+    top: 15px; /* 🔹 기존 20px → 10px로 조정 */
+    right: 100px; /* 로그아웃 버튼과의 간격 유지 */
+    font-size: 14px; /* 🔹 텍스트 크기 조정 */
+    font-weight: bold;
+    color: #E0E0E0;
+    background-color: rgba(255, 255, 255, 0.1); /* 반투명 배경 */
+    padding: 6px 12px; /* 🔹 패딩 줄여서 높이 최소화 */
+    border-radius: 6px; /* 🔹 둥글기 조정 */
+    display: flex;
+    align-items: center;
+    height: auto; /* 🔹 높이 자동 조정 */
+    line-height: 1.2; /* 🔹 텍스트 높이와 맞춤 */
+}
+
+/* ✅ 로그아웃 컨테이너 (배경색 X) */
+.logout-container {
+    position: absolute;
+    top: 50px;
+    right: 20px;
+    display: flex;
+    align-items: center;
+}
+
+/* ✅ 로그아웃 버튼 */
+.logout-form {
+    margin: 0;
+    padding: 0;
+}
+
+.logout-btn {
+    display: flex;
+    align-items: center;
+    background: none;
+    border: none;
+    color: #FFB347; /* 🔥 주황색 텍스트 */
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: bold;
+    transition: all 0.3s ease-in-out;
+}
+
+.logout-btn:hover {
+    color: #FFA500; /* 🔥 호버 시 더 밝은 주황색 */
+}
+
+/*data-chart-type: kr , us, coin */
+/*itemId */
+/* chart-type, name */
+/*가져온 다음 -> itemId, charType 너 alterTable에 insert*/
+
+/* SELECT MBRCD, chartType, itemId   */
+/*  MBRCD 를 기준으로 새로운 List        */
+
+/*1, 2, 3 ,4 ,5 */
+/* [001: {mbrcd: 001, itemid:5, price: ??, mbrcd:  002,itemid:5, mbrcd: 001, itemid:8,mbrcd: 003, itemid:5}] */
+/* [002: mbrcd: 001, itemid:5, mbrcd: 002, itemid:5, mbrcd: 001, itemid:8,mbrcd: 003, itemid:5] */
+/* [003: mbrcd: 001, itemid:5, mbrcd: 002, itemid:5, mbrcd: 001, itemid:8,mbrcd: 003, itemid:5] */
+
+/* 어떤 맴버가 어떤 type의 itemid를 알람설정했는지*/
+/* MBRCD 가 아닌 CHART-TYPE에 따라 나누고  getsimpleinfo(**심볼을 위한 파라미터**mapper.(type,itemId)) --> 결과값이 현재 가격 */
+/*가져온 현재 가격과 설정한 값이 설정한 % 와 시세 */

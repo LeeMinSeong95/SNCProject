@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.SNC.alert.mapper.AlertMapper">
+
+    <!-- 알림 설정 -->
+    <insert id="insertAlert">
+        INSERT INTO ALERT (ALERT_ID, MBR_CD, MARK_ID, ITEM_ID, ITEM_TYPE, ALERT_PERCENT, ALERT_TYPE, ALERT_CURRPRICE, ALERT_STATUS, ALERT_DT, ALERT_UPDT)
+        VALUES (SNC.alert_seq.NEXTVAL, #{mbrCd}, #{markId}, #{itemId}, #{itemType}, #{alertPercent}, #{alertType}, #{alertCurrPrice}, '1', SYSDATE, NULL)
+    </insert>
+
+    <!-- 알림 해제 -->
+    <delete id="deleteAlert">
+        DELETE
+        FROM ALERT
+        WHERE ALERT_ID = #{alertId}
+    </delete>
+
+    <!-- 알림 수정 -->
+    <update id="updateAlert">
+        UPDATE alert
+        <set>
+            <if test="alertPercent != null">
+                ALERT_PERCENT = #{alertPercent},
+            </if>
+            <if test="alertType != null">
+                ALERT_TYPE = #{alertType},
+            </if>
+            ALERT_CURRPRICE = #{alertCurrPrice},
+            ALERT_UPDT = SYSDATE
+        </set>
+        WHERE ALERT_ID = #{alertId}
+    </update>
+
+    <!-- 알림 타입(국장,미장,코인 정보 조회) -->
+    <select id="findByItemType" resultType="String">
+        SELECT
+        ITEM_TYPE AS itemType
+        FROM alert
+        WHERE ALERT_STATUS = '1'
+    </select>
+
+    <!-- 알림 타입 별 정보 조회 -->
+    <select id="findAlertsByItemType" parameterType="String" resultType="com.SNC.alert.vo.AlertVo">
+        SELECT
+        ALERT_ID AS alertId,
+        MBR_CD AS mbrCd,
+        MARK_ID AS markId,
+        ITEM_ID AS itemId,
+        ITEM_TYPE AS itemType,
+        ALERT_PERCENT AS alertPercent,
+        ALERT_TYPE AS alertType,
+        ALERT_STATUS AS alertStatus,
+        ALERT_CURRPRICE AS alertCurrPrice,
+        ALERT_DT AS alertDt,
+        ALERT_UPDT AS alertUpDt
+        FROM alert
+        WHERE ITEM_TYPE = #{itemType}
+        AND ALERT_STATUS = '1'
+    </select>
+
+    <!-- 특정 회원 알림 상태 -->
+    <select id="findByAlertStatus" parameterType="String" resultType="com.SNC.alert.dto.AlertDto">
+        SELECT
+            a.ALERT_ID AS alertId,
+            m.MBR_CD AS mbrCd,
+            a.MARK_ID AS markId,
+            a.ALERT_PERCENT AS alertPercent,
+            a.ALERT_TYPE AS alertType,
+            a.ALERT_STATUS AS alertStatus
+        FROM alert a
+            Join member m on
+            a.mbr_cd = m.mbr_cd
+            Join bookmark b on
+            a.mark_id = b.mark_id
+        WHERE a.MBR_CD = #{mbrId}
+    </select>
+
+
+
+
+    <!-- 한국 주식 심볼 조회 -->
+    <select id="getTickerByKRStockId" parameterType="String" resultType="String">
+        SELECT KRSTOCK_MARK_NM
+        FROM KRSTOCK
+        WHERE KRSTOCK_ID = #{itemId}
+    </select>
+
+    <!-- 미국 주식 심볼 조회 -->
+    <select id="getTickerByUSStockId" parameterType="String" resultType="String">
+        SELECT USSTOCK_MARK_NM
+        FROM USSTOCK
+        WHERE USSTOCK_ID = #{itemId}
+    </select>
+
+    <!-- 코인 심볼 조회 -->
+    <select id="getTickerByCoinId" parameterType="String" resultType="String">
+        SELECT COIN_MARK_NM
+        FROM COIN
+        WHERE COIN_ID = #{itemId}
+    </select>
+
+</mapper>

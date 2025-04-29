@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>서치바</title>
+</head>
+<body>
+
+<!-- 검색바를 fragment로 정의 -->
+<div th:fragment="searchbar">
+  <!--검색바 -->
+  <div class="search-container">
+    <div class="search-box">
+      <select class="search-options" id="searchOptions">
+        <option value="" selected disabled>옵션 선택</option>
+        <option value="news">뉴스</option>
+        <option value="chart">차트</option>
+      </select>
+      <input type="text" id="searchInput" placeholder="검색어를 입력하세요..."/>
+      <button type="button" class="search-btn" id="searchBtn">🔍</button>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>

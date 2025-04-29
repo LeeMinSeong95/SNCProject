@@ -1,0 +1,111 @@
+@charset "UTF-8";
+
+/* ✅ 전체 페이지 스타일 (다크모드 배경 적용) */
+body {
+    background-color: #1E1E1E; /* 다크모드 배경 */
+    color: #E0E0E0; /* 밝은 글씨 */
+    font-family: 'Arial', sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+/* ✅ 사이드바 공간 확보 */
+.contentWrap {
+    margin-left: 250px; /* 왼쪽 네비게이션 바 공간 확보 */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh; /* 화면 중앙 정렬 */
+}
+
+/* ✅ 로그인 박스 스타일 */
+.login-container {
+    background-color: #2A2A2A; /* 다크모드 카드 스타일 */
+    padding: 40px;
+    border-radius: 12px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    width: 320px;
+    text-align: center;
+}
+
+/* ✅ 제목 스타일 */
+.login-container h2 {
+    margin-bottom: 20px;
+    font-size: 24px;
+    color: #FFA500; /* 주황색 포인트 */
+}
+
+/* ✅ 입력 필드 스타일 */
+.form-group {
+    margin-bottom: 20px;
+    text-align: left;
+}
+
+.form-group label {
+    display: block;
+    font-size: 14px;
+    margin-bottom: 5px;
+    color: #E0E0E0;
+}
+
+.form-group input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #444;
+    border-radius: 6px;
+    background-color: #333;
+    color: #E0E0E0;
+    font-size: 16px;
+}
+
+/* ✅ 로그인 버튼 */
+button[type="submit"] {
+    width: 100%;
+    padding: 12px;
+    background-color: #FFA500; /* 주황색 포인트 */
+    color: #1E1E1E;
+    font-size: 16px;
+    font-weight: bold;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+button[type="submit"]:hover {
+    background-color: #FF8C00;
+}
+
+/* ✅ 회원가입 & 비밀번호 찾기 */
+.login-links {
+    margin-top: 15px;
+    font-size: 14px;
+}
+
+.login-links a {
+    color: #FFA500;
+    text-decoration: none;
+}
+
+.login-links a:hover {
+    text-decoration: underline;
+}
+
+.home-icon {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+}
+
+.home-icon img {
+    width: 40px;
+    height: 40px;
+    transition: transform 0.2s ease-in-out;
+}
+
+.home-icon img:hover {
+    transform: scale(1.1);
+}
