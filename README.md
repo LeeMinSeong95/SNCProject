@@ -70,35 +70,41 @@
 <br>
 <br>
 
-4. 게시판 (1) (INSERT)
+4. 게시판 (1) - (main)
+<img src="https://github.com/user-attachments/assets/a1ab379e-be90-4cb7-aed3-6d19787f7129" width="400" /> <img src="https://github.com/user-attachments/assets/519cf868-d3bd-42ce-bab7-2a384f4db681" width="400" />
+<br>
+<br>
+<br>    
+
+5. 게시판 (2) - (INSERT)
 
 <img src="https://github.com/user-attachments/assets/a1ab379e-be90-4cb7-aed3-6d19787f7129" width="400" /> <img src="https://github.com/user-attachments/assets/519cf868-d3bd-42ce-bab7-2a384f4db681" width="400" />
 <br>
 <br>
 <br>
 
-5. ⭐프로젝트 피드⭐ - 옵션2(임직원 초대하기, 참여자 검색)
+6. 게시판 (3) - (SELECT)
 
-![invite](https://github.com/LeeMinSeong95/mySODAproject/assets/157666399/f19a1ac8-5083-492e-8155-1387a53966ea)
-<br>
-<br>
-<br>
-
-6. ⭐프로젝트 피드⭐ - 게시글 생성(글)
-
-![post](https://github.com/LeeMinSeong95/mySODAproject/assets/157666399/de6ecb9c-f769-438c-9141-adb5c938a791)
+<img src="https://github.com/user-attachments/assets/4a23a46d-274a-4991-94a3-2f585aae464a" width="400" /> <img src="https://github.com/user-attachments/assets/a202080e-8c06-4112-9109-6a2680ee96dd" width="400" /> <img src="https://github.com/user-attachments/assets/76dce11f-863e-4eaf-a474-2049f16a7b52" width="400" /> <img src="https://github.com/user-attachments/assets/65a601c2-017c-47ba-80a7-63bb795f2852" width="400" />
 <br>
 <br>
 <br>
 
-7. ⭐프로젝트 피드⭐ - 게시글 생성(업무) 및 업무리포트
+7. 게시판 (4) - (UPDATE)
 
-![work](https://github.com/LeeMinSeong95/mySODAproject/assets/157666399/121e91aa-ca9b-4a4d-a5dd-c055c759fa1d)
+
 <br>
 <br>
 <br>
 
-8. ⭐프로젝트 피드⭐ - 게시글 생성(일정)
+8. 게시판 (5) - (DELETE)
+
+
+<br>
+<br>
+<br>
+
+9. 
 
 ![schedule](https://github.com/LeeMinSeong95/mySODAproject/assets/157666399/a2f9ba15-d59b-4d97-b622-1c46b8ee5869)
 <br>
