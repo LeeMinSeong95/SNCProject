@@ -130,7 +130,7 @@
 
 12. 알림 로직 (KAKAO / EMAIL)
 
-<img src="https://github.com/user-attachments/assets/8e51e279-c727-44d9-9cf0-e8730d8f91af" width="400" /> <img src="https://github.com/user-attachments/assets/947ff413-f7b1-446d-a06f-2ea9dcf5a2f9" width="400" /><img src="https://github.com/user-attachments/assets/0ae72f14-0511-47c7-83b2-305c22ca5541" width="400" />
+<img src="https://github.com/user-attachments/assets/8e51e279-c727-44d9-9cf0-e8730d8f91af" width="400" height="200" /> <img src="https://github.com/user-attachments/assets/947ff413-f7b1-446d-a06f-2ea9dcf5a2f9" width="400" height="200" /><img src="https://github.com/user-attachments/assets/0ae72f14-0511-47c7-83b2-305c22ca5541" width="400" height="200" />
 <br>
 <br>
 <br>
