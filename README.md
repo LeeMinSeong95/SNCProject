@@ -47,32 +47,32 @@
    <img src="https://img.shields.io/badge/mmnwoo33@naver.com-03C75A?style=flat&logo=Naver&logoColor=white">
    <br> 
 
-# ⏱ Function Implementation
+# ⭐ 구현 과정 (Implementation Process)
 
-1. 로그인 & 회원가입
+1. WebSocket & API
 
-![SODA_L_J](https://github.com/LeeMinSeong95/mySODAproject/assets/157666399/a35c031b-66aa-4859-9956-11af54364b64)
-<br>
-<br>
-<br>
-
-2. 대시보드
-
-![SODA_Dash](https://github.com/LeeMinSeong95/mySODAproject/assets/157666399/4b1c192a-9ce4-4aa7-b1d9-f1bc56112868)
+![Image](https://github.com/user-attachments/assets/e3445b70-26b1-498b-9d5b-07e694c6bde1)
 <br>
 <br>
 <br>
 
-3. ⭐검색바⭐ - 프로젝트, 게시글, 파일 검색
+2. 로그인 (Login)
 
-![Searchbar](https://github.com/LeeMinSeong95/mySODAproject/assets/157666399/0dfbacb1-e971-4ab9-8540-96fd9572f83f)
+<img src="https://github.com/user-attachments/assets/168e405b-4a73-442d-b926-f5f4d216a8f4" width="500" /> <img src="https://github.com/user-attachments/assets/9871257b-f546-4ac9-9e47-5177be0ea0f6" width="500" />
 <br>
 <br>
 <br>
 
-4. ⭐프로젝트 피드⭐ - 옵션1(색상, 폴더, 나가기, 삭제)
+3. 회원가입 (Join)
 
-![Project_option1](https://github.com/LeeMinSeong95/mySODAproject/assets/157666399/d107ec45-15d6-4841-abbb-e8262ace80c5)
+<img src="https://github.com/user-attachments/assets/1ee4b90a-1b2c-4be8-aab4-056e1d84ee02" width="500" /> <img src="https://github.com/user-attachments/assets/465fa358-cf01-44a7-af1b-5ee0082e2595" width="500" />
+<br>
+<br>
+<br>
+
+4. 게시판 (주식, 코인, 익명)
+
+
 <br>
 <br>
 <br>
