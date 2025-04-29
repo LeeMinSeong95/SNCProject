@@ -123,28 +123,14 @@
 11. 알림 (ALERT)
 
 <img src="https://github.com/user-attachments/assets/cefb0c49-6a46-4909-93a8-27e611a12d83" width="400" /> <img src="https://github.com/user-attachments/assets/da853ec8-8a84-40f5-962f-dd61dd6e94d3" width="400" />
-<img src="https://github.com/user-attachments/assets/8dc0bc60-cf46-4e0d-9f2f-547b63d5291d" width="400" /> <img src="https://github.com/user-attachments/assets/05945c8d-c2a4-40ee-b298-d6b18201a67b" width="400" />
+<img src="https://github.com/user-attachments/assets/8dc0bc60-cf46-4e0d-9f2f-547b63d5291d" width="400" /> <img src="https://github.com/user-attachments/assets/05945c8d-c2a4-40ee-b298-d6b18201a67b" width="400" /><img src="https://github.com/user-attachments/assets/b88d2e3a-ef10-4d7a-a6fb-11596671a5e0" width="400" /> <img src="https://github.com/user-attachments/assets/aa2319ca-4f89-43fa-993f-cb28e43dc504" width="400" />
 <br>
 <br>
 <br>
 
-12. ⭐프로젝트 피드⭐ - 프로필
+12. 알림 로직 (KAKAO / EMAIL)
 
-![Profile](https://github.com/LeeMinSeong95/mySODAproject/assets/157666399/ad426c6d-d2aa-4213-bed9-a5c57bccda5a)
-<br>
-<br>
-<br>
-
-13. 좌측바
-
-![SODA_Sidebar](https://github.com/LeeMinSeong95/mySODAproject/assets/157666399/1eab1497-afe1-45c1-83ca-ff468ab9a071)
-<br>
-<br>
-<br>
-
-14. 관리자 페이지
-
-![SODA_Ad](https://github.com/LeeMinSeong95/mySODAproject/assets/157666399/00902e56-1527-4666-b04b-a67fc87e2bf7)
+<img src="https://github.com/user-attachments/assets/8e51e279-c727-44d9-9cf0-e8730d8f91af" width="400" /> <img src="https://github.com/user-attachments/assets/947ff413-f7b1-446d-a06f-2ea9dcf5a2f9" width="400" /><img src="https://github.com/user-attachments/assets/0ae72f14-0511-47c7-83b2-305c22ca5541" width="400" />
 <br>
 <br>
 <br>
