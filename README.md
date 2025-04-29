@@ -9,7 +9,8 @@
 📑 프로젝트 개요 (Project Outline) <br />
 🔨 설계/프로세스 (Design/Process) <br />
 ⭐ 구현 기능 (Implementation Function) <br />
-📌 DataBase ERD 
+📌 DataBase ERD <br/>
+🎥 Video
 <br/>
 <br/>
 
@@ -175,3 +176,8 @@
 
 # 📌 DataBase ERD 
 ![Image](https://github.com/user-attachments/assets/15488521-9605-49ca-ab1f-2b5a8a021444)
+<br/>
+<br/>
+
+# 🎥 Video
+
