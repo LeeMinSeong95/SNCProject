@@ -180,4 +180,7 @@
 <br/>
 
 # 🎥 Video
-
+<div>
+  <h2>영상 (1) : 메인페이지, 로그인, 회원가입, 게시판</h2>
+  ![Demo](https://raw.githubusercontent.com/LeeMinSeong95/SNCProject/main/SNC-Project-_1_gif_.gif)
+</div>
