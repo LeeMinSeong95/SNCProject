@@ -8,7 +8,7 @@
 😀 자기소개 (self Introduction) <br />
 📑 프로젝트 개요 (Project Outline) <br />
 🔨 설계/프로세스 (Design/Process) <br />
-⭐ 구현 과정 (Implementation Process) <br />
+⭐ 구현 기능 (Implementation Function) <br />
 📌 DataBase ERD 
 
 # 😀 자기소개 (self Introduction)
@@ -45,9 +45,39 @@
    <img src="https://img.shields.io/badge/gns_nim_95-E4405F?style=flat&logo=Instagram&logoColor=white"/>
    <img src="https://img.shields.io/badge/mmnwoo33@gmail.com-EA4335?style=flat&logo=Gmail&logoColor=white" />
    <img src="https://img.shields.io/badge/mmnwoo33@naver.com-03C75A?style=flat&logo=Naver&logoColor=white">
-   <br> 
+   <br>
 
-# ⭐ 구현 과정 (Implementation Process)
+# 🔨 설계/프로세스 (Design/Process) <br/>
+<h2>프로젝트 기획</h2> <br/>
+<p>1. 주식과 코인 정보를 한 곳에서 실시간으로 확인할 수 있는 서비스 필요성에서 기획</p> <br />
+<p>2. WebSocket 기반 실시간 데이터 송수신과 REST API를 함께 활용한 빠른 반응과 안전성 </p> <br />
+<p>3. 주식 / 코인 커뮤니티 기능을 통해 사용자 간 정보 공유</p> <br />
+<p>4. 알림 설정을 통해 빠른 시세 변동 감지</p> 
+<br/>
+<br/>
+<h2>주요 기능 설계</h2> <br/>
+<p>1. 실시간 데이터 : WebSocket 및REST API를 활용하여 주식 & 코인 시세 실시간 송수신 </p> <br />
+<p>2. 보안 : Spring Security를 통해 사용자의 인증/인가 및 접근 제어 설정</p> <br />
+<p>3. 게시판 : 주식(국내,해외), 코인, 익명(익명,QnA) 게시판 구현으로 사용자 간 실시간 정보 공유 </p> <br />
+<p>4. 알림 기능 : 시세 변동 감지 시 카카오톡 나에게 보내기 및 이메일을 통한 사용자 알림 제공 </p>
+<br/>
+<br/>
+<h2>기술 스택 선정 이유</h2> <br/>
+<p>1. WebSocket : 실시간 데이터 송수신</p> <br />
+<p>2. Spring Boot & Spring Security : 백엔드 구조의 통합성과 보안 적용이 용이</p> <br />
+<p>3. MyBatis : SQL 제어의 유연성을 위함</p> <br />
+<p>4. Thymeleaf : 타임리프를 활용하여 데이터를 사용, 동적인 웹페이지 생성</p> <br />
+<p>4. REST API : 원하는 주식과 코인 데이터를 받아오고, 알림 설정 시 카카오톡 나에게 보내기 활용</p>
+<br/>
+<br/>
+<h2>회고 및 개선점</h2> <br/>
+<p>1. WebSocket : WebSocket 사용의 이해 및 코드의 가독성과 정리 필요 판단</p> <br />
+<p>2. Spring Boot & Spring Security : 깔끔한 커스터 마이징으로 접근 제어 편리</p> <br />
+<p>3. MyBatis : SQL 쿼리문을 다양한 상황에서 다채롭게 사용 if,where 등</p> <br />
+<p>4. Thymeleaf : 타임리프의 속성 if, each, text, value 등 다양한 속성으로 동적인 웹페이지를 쉽게 구현</p> <br/>
+<p>5. REST API : 카카오톡 나에게 보내기 REST API를 통해 알림 설정 구현, 테스트 통과를 했지만 실제적인 알림 로직에 대한 코드의 간결화와 정확성 의문</p>
+
+# ⭐ 구현 기능 (Implementation Function)
 
 1. WebSocket & API
 
