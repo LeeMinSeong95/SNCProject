@@ -1,98 +1,187 @@
-<<<<<<< HEAD
-# SNCProejct
+<div align="center">
+  <img src="https://capsule-render.vercel.app/api?type=waving&color=auto&height=200&section=header&text=SNC%20Project&fontSize=50" />
+  <br />
+  <strong>(Stock And Coin Project)</strong>
+</div>
 
+# 📢 목차
+😀 자기소개 (self Introduction) <br />
+📑 프로젝트 개요 (Project Outline) <br />
+🔨 설계/프로세스 (Design/Process) <br />
+⭐ 구현 기능 (Implementation Function) <br />
+📌 DataBase ERD <br/>
+🎥 Video
+<br/>
+<br/>
 
+# 😀 자기소개 (self Introduction)
+  1️⃣ 이름(한글명/영문명) : 이 민 성 / Lee Min Seong <br />
+  2️⃣ 생년 월일 : 1995년 10월 19일 <br />
+  3️⃣ 학력 : 2년제(초대졸) / 서영대학교 파주캠퍼스(3.71) <br />
+  4️⃣ 주소 : 서울특별시 강서구 금낭화로 287-19 <br />
+  5️⃣ 병역 사항: 육군 / 통신병(병장 만기전역) / 2015.08.04 - 2017.05.03 
+<br/>
+<br/>
 
-## Getting started
+# 📑 프로젝트 개요 (Project Outline)
 
-To make it easy for you to get started with GitLab, here's a list of recommended next steps.
+1. 프로젝트 명 : SNC Project (Stock And Coin Project)
+2. 프로젝트 기간 : 2025.02.17 ~ 2025.04.26 (약 2개월)
+3. 프로젝트 소개 : 투자에 주목하는 시대, 주식과 코인 투자자들을 위한 실시간 주식 및 코인 정보 제공, 게시판을 통한 사용자 간 정보 공유 그리고 알림 설정으로 빠르고 간편한 알림 받기로 주식 정보를 한 눈에! 
+4. 프로젝트 인원 : 3명
+5. 프로젝트 주요 기능 <br />
+   💠 WebSocket <br />
+   💠 Rest API <br />
+   💠 Spring Security <br />
+   💠 Board <br />
+   💠 Alert <br/>  
 
-Already a pro? Just edit this README.md and make it your own. Want to make it easy? [Use the template at the bottom](#editing-this-readme)!
+6. 프로젝트 사용 기술 스택 <br />
+   ⚙️ Programming Language : <img src="https://img.shields.io/badge/Java-007396?style=flat&logo=Java&logoColor=white" /> <br />
+   🖥️ Server Framework : <img src="https://img.shields.io/badge/SpringBoot-6DB33F?style=flat&logo=springboot&logoColor=white" /> <br />
+   📱 IDE : <img src="https://img.shields.io/badge/IntelliJIDEA-000000?style=flat&logo=intellijidea&logoColor=white" /> / <img src="https://img.shields.io/badge/DBeaver-372923?style=flat&logo=dbeaver&logoColor=white" /> <br />
+   🫙 DataBase : <img src="https://img.shields.io/badge/Oracle-F80000?style=flat&logo=Oracle&logoColor=white" /> <br />
+   👥 Version Control : <img src="https://img.shields.io/badge/GitLab-FC6D26?style=flat&logo=GitLab&logoColor=white" /> <br />
+   🔨 Web Development Technologies <br/>
+   <img src="https://img.shields.io/badge/jQuery-0769AD?style=flat&logo=jquery&logoColor=white" /> / <img src="https://img.shields.io/badge/REST API-009688?style=flat&logoColor=white" /> / <img src="https://img.shields.io/badge/MyBatis-DB2B1C?style=flat&logoColor=white" /> / <img src="https://img.shields.io/badge/Thymeleaf-005F0F?style=flat&logoColor=white" /> / <img src="https://img.shields.io/badge/Ajax-4682B4?style=flat&logo=Ajax&logoColor=white" /> / <img src="https://img.shields.io/badge/HTML5-E34F26?style=flat&logo=HTML5&logoColor=white" /> / <img src="https://img.shields.io/badge/JavaScript-yellow?style=flat&logo=JavaScript&logoColor=white" /> / <img src="https://img.shields.io/badge/CSS3-1572B6?style=flat&logo=CSS3&logoColor=white" /> <br />
+   📊 Total Report <br/>
+    ![Top Langs](https://github-readme-stats.vercel.app/api/top-langs/?username=LeeMinSeong95&layout=compact&theme=tokyonight) <br/>
+   
+7. SNS 안내 <br/>
+   <img src="https://img.shields.io/badge/gns_nim_95-E4405F?style=flat&logo=Instagram&logoColor=white"/>
+   <img src="https://img.shields.io/badge/mmnwoo33@gmail.com-EA4335?style=flat&logo=Gmail&logoColor=white" />
+   <img src="https://img.shields.io/badge/mmnwoo33@naver.com-03C75A?style=flat&logo=Naver&logoColor=white">
+<br/>
+<br/>
 
-## Add your files
+# 🔨 설계/프로세스 (Design/Process) <br/>
+<h2>프로젝트 기획</h2> <br/>
+<p>1. 주식과 코인 정보를 한 곳에서 실시간으로 확인할 수 있는 서비스 필요성에서 기획</p> <br />
+<p>2. WebSocket 기반 실시간 데이터 송수신과 REST API를 함께 활용한 빠른 반응과 안전성 </p> <br />
+<p>3. 주식 / 코인 커뮤니티 기능을 통해 사용자 간 정보 공유</p> <br />
+<p>4. 알림 설정을 통해 빠른 시세 변동 감지</p> 
+<br/>
+<br/>
+<h2>주요 기능 설계</h2> <br/>
+<p>1. 실시간 데이터 : WebSocket 및REST API를 활용하여 주식 & 코인 시세 실시간 송수신 </p> <br />
+<p>2. 보안 : Spring Security를 통해 사용자의 인증/인가 및 접근 제어 설정</p> <br />
+<p>3. 게시판 : 주식(국내,해외), 코인, 익명(익명,QnA) 게시판 구현으로 사용자 간 실시간 정보 공유 </p> <br />
+<p>4. 알림 기능 : 시세 변동 감지 시 카카오톡 나에게 보내기 및 이메일을 통한 사용자 알림 제공 </p>
+<br/>
+<br/>
+<h2>기술 스택 선정 이유</h2> <br/>
+<p>1. WebSocket : 실시간 데이터 송수신</p> <br />
+<p>2. Spring Boot & Spring Security : 백엔드 구조의 통합성과 보안 적용이 용이</p> <br />
+<p>3. MyBatis : SQL 제어의 유연성을 위함</p> <br />
+<p>4. Thymeleaf : 타임리프를 활용하여 데이터를 사용, 동적인 웹페이지 생성</p> <br />
+<p>4. REST API : 원하는 주식과 코인 데이터를 받아오고, 알림 설정 시 카카오톡 나에게 보내기 활용</p>
+<br/>
+<br/>
+<h2>회고 및 개선점</h2> <br/>
+<p>1. WebSocket : WebSocket 사용의 이해 및 코드의 가독성과 정리 필요 판단</p> <br />
+<p>2. Spring Boot & Spring Security : 깔끔한 커스터 마이징으로 접근 제어 편리</p> <br />
+<p>3. MyBatis : SQL 쿼리문을 다양한 상황에서 다채롭게 사용 if,where 등</p> <br />
+<p>4. Thymeleaf : 타임리프의 속성 if, each, text, value 등 다양한 속성으로 동적인 웹페이지를 쉽게 구현</p> <br/>
+<p>5. REST API : 카카오톡 나에게 보내기 REST API를 통해 알림 설정 구현, 테스트 통과를 했지만 실제적인 알림 로직에 대한 코드의 간결화와 정확성 의문</p>
+<br/>
+<br/>
 
-- [ ] [Create](https://docs.gitlab.com/ee/user/project/repository/web_editor.html#create-a-file) or [upload](https://docs.gitlab.com/ee/user/project/repository/web_editor.html#upload-a-file) files
-- [ ] [Add files using the command line](https://docs.gitlab.com/ee/gitlab-basics/add-file.html#add-a-file-using-the-command-line) or push an existing Git repository with the following command:
+# ⭐ 구현 기능 (Implementation Function)
 
-```
-cd existing_repo
-git remote add origin https://gitlab.com/DHSDdong/sncproejct.git
-git branch -M main
-git push -uf origin main
-```
+1. WebSocket & API
 
-## Integrate with your tools
+![Image](https://github.com/user-attachments/assets/e3445b70-26b1-498b-9d5b-07e694c6bde1)
+<br>
+<br>
+<br>
 
-- [ ] [Set up project integrations](https://gitlab.com/DHSDdong/sncproejct/-/settings/integrations)
+2. 로그인 (Login)
 
-## Collaborate with your team
+<img src="https://github.com/user-attachments/assets/168e405b-4a73-442d-b926-f5f4d216a8f4" width="400" /> <img src="https://github.com/user-attachments/assets/9871257b-f546-4ac9-9e47-5177be0ea0f6" width="400" />
+<br>
+<br>
+<br>
 
-- [ ] [Invite team members and collaborators](https://docs.gitlab.com/ee/user/project/members/)
-- [ ] [Create a new merge request](https://docs.gitlab.com/ee/user/project/merge_requests/creating_merge_requests.html)
-- [ ] [Automatically close issues from merge requests](https://docs.gitlab.com/ee/user/project/issues/managing_issues.html#closing-issues-automatically)
-- [ ] [Enable merge request approvals](https://docs.gitlab.com/ee/user/project/merge_requests/approvals/)
-- [ ] [Set auto-merge](https://docs.gitlab.com/ee/user/project/merge_requests/merge_when_pipeline_succeeds.html)
+3. 회원가입 (Join)
 
-## Test and Deploy
+<img src="https://github.com/user-attachments/assets/1ee4b90a-1b2c-4be8-aab4-056e1d84ee02" width="400" /> <img src="https://github.com/user-attachments/assets/465fa358-cf01-44a7-af1b-5ee0082e2595" width="400" />
+<br>
+<br>
+<br>
 
-Use the built-in continuous integration in GitLab.
+4. 게시판 (Board) (1) - (main)
 
-- [ ] [Get started with GitLab CI/CD](https://docs.gitlab.com/ee/ci/quick_start/)
-- [ ] [Analyze your code for known vulnerabilities with Static Application Security Testing (SAST)](https://docs.gitlab.com/ee/user/application_security/sast/)
-- [ ] [Deploy to Kubernetes, Amazon EC2, or Amazon ECS using Auto Deploy](https://docs.gitlab.com/ee/topics/autodevops/requirements.html)
-- [ ] [Use pull-based deployments for improved Kubernetes management](https://docs.gitlab.com/ee/user/clusters/agent/)
-- [ ] [Set up protected environments](https://docs.gitlab.com/ee/ci/environments/protected_environments.html)
+<img src="https://github.com/user-attachments/assets/938c3b65-5826-4760-aa40-75b087898610" width="400" /> <img src="https://github.com/user-attachments/assets/2817c7e2-c707-4ee7-a2bc-68d05b10238f" width="400" /> <img src="https://github.com/user-attachments/assets/e93cdacf-5119-4fc0-9a2a-f2430962c0ba" width="400" />
+<br>
+<br>
+<br>    
 
-***
+5. 게시판 (Board) (2) - (INSERT)
 
-# Editing this README
+<img src="https://github.com/user-attachments/assets/a1ab379e-be90-4cb7-aed3-6d19787f7129" width="400" /> <img src="https://github.com/user-attachments/assets/519cf868-d3bd-42ce-bab7-2a384f4db681" width="400" />
+<br>
+<br>
+<br>
 
-When you're ready to make this README your own, just edit this file and use the handy template below (or feel free to structure it however you want - this is just a starting point!). Thanks to [makeareadme.com](https://www.makeareadme.com/) for this template.
+6. 게시판 (Board) (3) - (SELECT)
 
-## Suggestions for a good README
+<img src="https://github.com/user-attachments/assets/4a23a46d-274a-4991-94a3-2f585aae464a" width="400" /> <img src="https://github.com/user-attachments/assets/a202080e-8c06-4112-9109-6a2680ee96dd" width="400" /> <img src="https://github.com/user-attachments/assets/76dce11f-863e-4eaf-a474-2049f16a7b52" width="400" /> <img src="https://github.com/user-attachments/assets/65a601c2-017c-47ba-80a7-63bb795f2852" width="400" />
+<br>
+<br>
+<br>
 
-Every project is different, so consider which of these sections apply to yours. The sections used in the template are suggestions for most open source projects. Also keep in mind that while a README can be too long and detailed, too long is better than too short. If you think your README is too long, consider utilizing another form of documentation rather than cutting out information.
+7. 게시판 (Board) (4) - (UPDATE)
 
-## Name
-Choose a self-explaining name for your project.
+<img src="https://github.com/user-attachments/assets/35148202-ee40-4b71-9d48-7e0b3de37e7a" width="400" /> <img src="https://github.com/user-attachments/assets/f844467c-368d-4985-92b0-4605f9b93b2b" width="400" />
+<br>
+<br>
+<br>
 
-## Description
-Let people know what your project can do specifically. Provide context and add a link to any reference visitors might be unfamiliar with. A list of Features or a Background subsection can also be added here. If there are alternatives to your project, this is a good place to list differentiating factors.
+8. 게시판 (Board) (5) - (DELETE)
 
-## Badges
-On some READMEs, you may see small images that convey metadata, such as whether or not all the tests are passing for the project. You can use Shields to add some to your README. Many services also have instructions for adding a badge.
+<img src="https://github.com/user-attachments/assets/4c7a373a-2c1c-49b9-983e-a8e8facd815d" width="400" /> <img src="https://github.com/user-attachments/assets/1f185970-e631-4c75-aed1-425c81993323" width="400" />
+<br>
+<br>
+<br>
 
-## Visuals
-Depending on what you are making, it can be a good idea to include screenshots or even a video (you'll frequently see GIFs rather than actual videos). Tools like ttygif can help, but check out Asciinema for a more sophisticated method.
+9. 게시판 댓글 (COMMENTS)
 
-## Installation
-Within a particular ecosystem, there may be a common way of installing things, such as using Yarn, NuGet, or Homebrew. However, consider the possibility that whoever is reading your README is a novice and would like more guidance. Listing specific steps helps remove ambiguity and gets people to using your project as quickly as possible. If it only runs in a specific context like a particular programming language version or operating system or has dependencies that have to be installed manually, also add a Requirements subsection.
+<img src="https://github.com/user-attachments/assets/86b6b303-678e-4ad8-9934-38a5ce144a91" width="400" /> <img src="https://github.com/user-attachments/assets/49cfd5ed-492c-4c51-8fa4-6a0c65686f19" width="400" />
+<img src="https://github.com/user-attachments/assets/6e74784a-18c0-4b44-a3d8-d7c9b2d89ee8" width="400" />
+<br>
+<br>
+<br>
 
-## Usage
-Use examples liberally, and show the expected output if you can. It's helpful to have inline the smallest example of usage that you can demonstrate, while providing links to more sophisticated examples if they are too long to reasonably include in the README.
+10. 게시판 좋아요 (LIKES)
 
-## Support
-Tell people where they can go to for help. It can be any combination of an issue tracker, a chat room, an email address, etc.
+<img src="https://github.com/user-attachments/assets/3761fd0f-5f0f-4544-a0a0-4b2c967a2606" width="400" /> <img src="https://github.com/user-attachments/assets/db7dd259-9fe8-46c5-9803-5283e098cc2f" width="400" /><img src="https://github.com/user-attachments/assets/1b07d288-fd68-42d8-a0c5-e5c30edcf70a" width="400" />
+<br>
+<br>
+<br>
 
-## Roadmap
-If you have ideas for releases in the future, it is a good idea to list them in the README.
+11. 알림 (ALERT)
 
-## Contributing
-State if you are open to contributions and what your requirements are for accepting them.
+<img src="https://github.com/user-attachments/assets/cefb0c49-6a46-4909-93a8-27e611a12d83" width="400" /> <img src="https://github.com/user-attachments/assets/da853ec8-8a84-40f5-962f-dd61dd6e94d3" width="400" />
+<img src="https://github.com/user-attachments/assets/8dc0bc60-cf46-4e0d-9f2f-547b63d5291d" width="400" /> <img src="https://github.com/user-attachments/assets/05945c8d-c2a4-40ee-b298-d6b18201a67b" width="400" /><img src="https://github.com/user-attachments/assets/b88d2e3a-ef10-4d7a-a6fb-11596671a5e0" width="400" /> <img src="https://github.com/user-attachments/assets/aa2319ca-4f89-43fa-993f-cb28e43dc504" width="400" />
+<br>
+<br>
+<br>
 
-For people who want to make changes to your project, it's helpful to have some documentation on how to get started. Perhaps there is a script that they should run or some environment variables that they need to set. Make these steps explicit. These instructions could also be useful to your future self.
+12. 알림 로직 (KAKAO / EMAIL)
 
-You can also document commands to lint the code or run tests. These steps help to ensure high code quality and reduce the likelihood that the changes inadvertently break something. Having instructions for running tests is especially helpful if it requires external setup, such as starting a Selenium server for testing in a browser.
+<img src="https://github.com/user-attachments/assets/8e51e279-c727-44d9-9cf0-e8730d8f91af" width="400" height="200" /> <img src="https://github.com/user-attachments/assets/947ff413-f7b1-446d-a06f-2ea9dcf5a2f9" width="400" height="200" /><img src="https://github.com/user-attachments/assets/0ae72f14-0511-47c7-83b2-305c22ca5541" width="400" height="200" />
+<br>
+<br>
+<br>
 
-## Authors and acknowledgment
-Show your appreciation to those who have contributed to the project.
+# 📌 DataBase ERD 
+![Image](https://github.com/user-attachments/assets/15488521-9605-49ca-ab1f-2b5a8a021444)
+<br/>
+<br/>
 
-## License
-For open source projects, say how it is licensed.
+# 🎥 Video
+## 영상 (1) : 메인페이지, 로그인, 회원가입, 게시판  
+![Demo1](https://raw.githubusercontent.com/LeeMinSeong95/SNCProject/main/SNC-Project-_1_gif_.gif)
 
-## Project status
-If you have run out of energy or time for your project, put a note at the top of the README saying that development has slowed down or stopped completely. Someone may choose to fork your project or volunteer to step in as a maintainer or owner, allowing your project to keep going. You can also make an explicit request for maintainers.
-=======
-# SNCProject
-Stock And Coin Project : 주식 &amp; 코인
->>>>>>> a3f16ddf0353b5aae2a62368e863b6003f2ec942
+## 영상 (2) : 즐겨찾기, 알림  
+![Demo2](https://raw.githubusercontent.com/LeeMinSeong95/SNCProject/main/SNC-Project-_2_gif_.gif)
