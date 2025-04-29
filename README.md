@@ -58,21 +58,21 @@
 
 2. 로그인 (Login)
 
-<img src="https://github.com/user-attachments/assets/168e405b-4a73-442d-b926-f5f4d216a8f4" width="500" /> <img src="https://github.com/user-attachments/assets/9871257b-f546-4ac9-9e47-5177be0ea0f6" width="500" />
+<img src="https://github.com/user-attachments/assets/168e405b-4a73-442d-b926-f5f4d216a8f4" width="400" /> <img src="https://github.com/user-attachments/assets/9871257b-f546-4ac9-9e47-5177be0ea0f6" width="400" />
 <br>
 <br>
 <br>
 
 3. 회원가입 (Join)
 
-<img src="https://github.com/user-attachments/assets/1ee4b90a-1b2c-4be8-aab4-056e1d84ee02" width="500" /> <img src="https://github.com/user-attachments/assets/465fa358-cf01-44a7-af1b-5ee0082e2595" width="500" />
+<img src="https://github.com/user-attachments/assets/1ee4b90a-1b2c-4be8-aab4-056e1d84ee02" width="400" /> <img src="https://github.com/user-attachments/assets/465fa358-cf01-44a7-af1b-5ee0082e2595" width="400" />
 <br>
 <br>
 <br>
 
-4. 게시판 (주식, 코인, 익명)
+4. 게시판 (1) (INSERT)
 
-
+<img src="https://github.com/user-attachments/assets/a1ab379e-be90-4cb7-aed3-6d19787f7129" width="400" /> <img src="https://github.com/user-attachments/assets/519cf868-d3bd-42ce-bab7-2a384f4db681" width="400" />
 <br>
 <br>
 <br>
@@ -147,5 +147,5 @@
 <br>
 <br>
 
-# 🛢DataBase ERD
-![SODA_ERD](https://github.com/LeeMinSeong95/mySODAproject/assets/157666399/71aecd64-0282-4f7d-b42b-f9221e7be350)
+# 📌 DataBase ERD 
+![Image](https://github.com/user-attachments/assets/15488521-9605-49ca-ab1f-2b5a8a021444)
